@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+
+        <title>VetZ</title>
+        
+        <!-- Loading Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Loading código CSS -->
+        <link href="css/style.css" rel="stylesheet" media="screen and (color)">
+
+        <!-- Awsome Fonts -->
+        <link href="css/all.min.css" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link href="images/logoPNG.png" rel="shortcut icon">
+    </head>
+
+    <body>
+        <!--Begin Header-->
+        <header class="header">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg">
+        
+                        <a href="index.html" rel="home">
+                            <img class="logomenu" src="images/Logo VETZ.svg" alt="VET Z" title="VetZ">
+                        </a>
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon">
+                                <i class="fas fa-bars"></i>
+                            </span>
+                        </button>
+        
+                        <div class="navbar-collapse collapse" id="navbarCollapse">
+                            <ul class="navbar-nav ml-auto 1  left-menu">
+                                <li><a href="./index.html">HOME PAGE</a></li>
+                                <li><a href="./sobreNOS.html">SOBRE NÓS</a></li>
+                                <li><a href="./curiosidades.html">CURIOSIDADES</a></li>
+                                <li><a href="./recomendacoes.html">RECOMENDAÇÕES</a></li>
+                                <li><a href="./vacinacao.html">VACINAÇÃO</a></li>
+                                <li><a class="btn btn-menu" href="./perfil.html" role="button"><img class="imgperfil" src="images/perfil.svg"> SEU PERFIL</a></li>
+                            </ul> 
+                            
+                        </div>
+                    </nav>
+                </div> 
+            </nav>
+        </header>
+        <!--End Header-->
+
+
+        <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
+
+        <!-- Begin Section Pet -->
+        <section class="sectionPet" id="secPet">
+            <div class="container">
+                <p class="sec04phtiltle">PERFIL DO PET</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/imgMane.png" class="card-img-top-perfilPet" alt="Mané">
+                        <a href="#" class="sec04alterar">Alterar Foto do Pet</a>
+
+                    <div class="dadoPerfilsecPet1">
+                        <div class="form-group">
+                            <label for="porte">Porte</label>
+                            <input type="text" id="text" class="form-control perfil-input" value="Médio" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="peso">Peso</label>
+                            <input type="number" id="peso" class="form-control perfil-input" value="15" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sexo">Sexo</label>
+                            <input type="text" id="sexo" class="form-control perfil-input" value="Macho" readonly>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="dadoPerfilsecPet">
+
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" class="form-control perfil-input" value="Luck (Mané)" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="raca">Raça</label>
+                                <input type="text" id="raca" class="form-control perfil-input" value="Vira-Lata" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="idade">Idade</label>
+                                <input type="number" id="idade" class="form-control perfil-input" value="5" readonly>
+                            </div>
+
+                           <a href="perfil_usuario.html" ><p class="secPeteditar">Voltar ao Perfil de Usuário</p></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Section 04 -->
+
+        <!-- Begin footer-->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="footerp1">
+                            Todos os direitos reservados <span id="footer-year"></span> © - VetZ </p>
+                    </div>
+
+                    <!-- <div class="col-md-1">
+                        <p class="instagram">
+                            <a><img href="#!" src="images/instagram.svg"></a>
+                    </div>
+                    <div class="col-md-1">
+                        <p class="email">
+                            <a><img href="#!" src="images/email.svg"></a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!--End footer-->
+
+
+        <!-- Load JS =============================-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery.scrollTo-min.js"></script>
+        <script src="js/jquery.nav.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

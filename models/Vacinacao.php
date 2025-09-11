@@ -39,6 +39,7 @@ class Vacinacao {
         $stmt->bindParam(':doses', $doses);
         $stmt->bindParam(':id_vacina', $id_vacina);
         $stmt->bindParam(':id_pet', $id_pet);
+        $stmt->bindParam(':id_usuario', $id);
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
@@ -73,17 +74,19 @@ class Vacinacao {
 
     public function listar() {
         $sql = "SELECT 
-                    v.id, 
-                    v.data, 
-                    v.doses, 
-                    rv.vacina AS nome_vacina, 
-                    p.nome AS nome_pet
-                FROM vacinacao v
-                INNER JOIN registro_vacina rv ON v.id_vacina = rv.id_vacina
-                INNER JOIN pets p ON v.id_pet = p.id";
+                v.id, 
+                v.data, 
+                v.doses, 
+                rv.vacina AS nome_vacina, 
+                p.nome AS nome_pet,
+                u.nome AS nome_tutor
+            FROM vacinacao v
+            INNER JOIN registro_vacina rv ON v.id_vacina = rv.id_vacina
+            INNER JOIN pets p ON v.id_pet = p.id
+            INNER JOIN usuarios u ON p.id_usuario = u.id";
         $stmt = $this->conn->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+}
 
     public function listarPorPet($id_pet) {
         $sql = "SELECT v.id, v.data, v.doses, rv.vacina AS nome_vacina

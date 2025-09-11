@@ -56,13 +56,17 @@ if (preg_match('#^/projeto/vetz/excluir-vacina/(\d+)$#', $request, $matches)) {
 
 // Atualizar Usuário - Exibir formulário
 if (preg_match('#^/projeto/vetz/update-usuario/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'GET') {
-    (new UsuarioController())->showUpdateForm($matches[1]);
+    $dados = $_POST;
+    $dados['id'] = $matches[1];
+    (new UsuarioController())->atualizar($dados, $_FILES);
     exit;
 }
 
 // Atualizar Usuário - Processar POST
 if (preg_match('#^/projeto/vetz/update-usuario/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    (new UsuarioController())->updateUsuario($matches[1]);
+    $dados = $_POST;
+    $dados['id'] = $matches[1];
+    (new UsuarioController())->atualizar($dados, $_FILES);
     exit;
 }
 
@@ -114,7 +118,7 @@ switch ($request) {
         break;
 
     // Camilla chefona
-    case '/projeto/vetz/public/':
+    case '/projeto/vetz/formulario':
         (new PetController())->showForm();
         break;
 

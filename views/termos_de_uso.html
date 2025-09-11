@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+
+        <title>VetZ</title>
+        
+        <!-- Loading Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Loading código CSS -->
+        <link href="css/style.css" rel="stylesheet" media="screen and (color)">
+
+        <!-- Awsome Fonts -->
+        <link href="css/all.min.css" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link href="images/logoPNG.png" rel="shortcut icon">
+    </head>
+
+    <body>
+        <!--Begin Header-->
+        <header class="header">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg">
+        
+                        <a href="index.html" rel="home">
+                            <img class="logomenu" src="images/Logo VETZ.svg" alt="VET Z" title="VetZ">
+                        </a>
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon">
+                                <i class="fas fa-bars"></i>
+                            </span>
+                        </button>
+        
+                        <div class="navbar-collapse collapse" id="navbarCollapse">
+                            <ul class="navbar-nav ml-auto 1  left-menu">
+                                <li><a href="./index.html">HOME PAGE</a></li>
+                                <li><a href="./sobreNOS.html">SOBRE NÓS</a></li>
+                                <li><a href="./Login.html">CURIOSIDADES</a></li>
+                                <li><a href="./Login.html">RECOMENDAÇÕES</a></li>
+                                <li><a href="./Login.html">VACINAÇÃO</a></li>
+                                <li><a class="btn btn-menu" href="./Login.html" role="button"><img class="imgperfil" src="images/perfil.svg"> CADASTRO</a></li>
+                            </ul> 
+                            
+                        </div>
+                    </nav>
+                </div> 
+            </nav>
+        </header>
+        <!--End Header-->
+
+        <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
+         <section class="sectionTermoUso" id="termos">
+            
+            <h1>Termos de Uso</h1>
+            <div class="termos-scroll">
+            <p>
+                Ao criar uma conta neste site, você concorda com os seguintes termos:
+                <br/><br/>
+                1. Aceitação dos Termos
+        Ao utilizar este site, você concorda em cumprir e estar legalmente vinculado aos presentes Termos de Uso, bem como à nossa Política de Privacidade. Caso não concorde com qualquer cláusula, recomendamos que interrompa o uso imediatamente.
+
+        2. Cadastro e Responsabilidades do Usuário
+        Para acessar determinadas funcionalidades, é necessário criar uma conta, fornecendo informações verdadeiras, completas e atualizadas. O usuário é o único responsável por manter a confidencialidade de sua senha e por todas as atividades realizadas em sua conta.
+
+        É proibido utilizar dados falsos, de terceiros ou ofensivos;
+
+        A conta é pessoal e intransferível;
+
+        Em caso de uso não autorizado, o usuário deve comunicar imediatamente à administração do site.
+
+        3. Uso Permitido
+        Este site destina-se ao uso pessoal e informativo. É proibido:
+
+        Modificar, reproduzir ou distribuir qualquer conteúdo sem autorização;
+
+        Utilizar o site para fins ilegais ou que violem direitos de terceiros;
+
+        Introduzir vírus, malwares ou qualquer tecnologia que comprometa o funcionamento do site.
+
+        4. Coleta e Uso de Dados
+        As informações fornecidas por você serão tratadas de acordo com nossa Política de Privacidade, em conformidade com a Lei Geral de Proteção de Dados (LGPD). Os dados poderão ser utilizados para:
+
+        Prestação de serviços e funcionalidades;
+
+        Comunicação com o usuário;
+
+        Aperfeiçoamento da experiência de navegação;
+
+        Cumprimento de obrigações legais.
+
+        5. Notificações e Comunicações
+        Podemos enviar notificações por e-mail, SMS ou outros meios de contato informados pelo usuário, incluindo informações importantes, atualizações e novidades. O usuário poderá optar por desativar determinadas comunicações.
+
+        6. Alterações nos Termos
+        Reservamo-nos o direito de atualizar estes Termos de Uso a qualquer momento, sendo recomendável revisar esta página periodicamente. O uso contínuo do site após alterações será interpretado como concordância com os novos termos.
+
+        7. Encerramento de Conta
+        O usuário pode, a qualquer momento, solicitar o encerramento de sua conta. Nos reservamos o direito de suspender ou excluir contas que violem estes termos, sem aviso prévio.
+
+        8. Isenção de Responsabilidade
+        Embora nos esforcemos para manter o site seguro e funcional, não garantimos que o serviço será isento de erros ou interrupções. Não nos responsabilizamos por danos diretos ou indiretos resultantes do uso ou da incapacidade de uso do site.
+
+        9. Legislação Aplicável
+        Estes Termos de Uso serão regidos e interpretados de acordo com as leis brasileiras. Em caso de conflito, o foro da comarca do domicílio do usuário será o competente para dirimir qualquer controvérsia.
+            </p>
+            </div>
+
+            <label class="checkbox-container">
+            <input type="checkbox" id="aceite" />
+            <span class="checkmark"></span>
+            Eu aceito os termos de uso
+            </label>
+
+            <p id="erro-termos" class="mensagem-erro" style="display: none;">
+            Você deve aceitar os termos de uso para continuar.
+            </p>
+
+            <button class="next" id="botaoNext">&#x27A4;</button>
+        </main>
+         </section>
+
+         <!-- Begin footer-->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="footerp1">
+                            Todos os direitos reservados <span id="footer-year"></span> © - VetZ </p>
+                    </div>
+
+                    <!-- <div class="col-md-1">
+                        <p class="instagram">
+                            <a><img href="#!" src="images/instagram.svg"></a>
+                    </div>
+                    <div class="col-md-1">
+                        <p class="email">
+                            <a><img href="#!" src="images/email.svg"></a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!--End footer-->
+
+
+        <!-- Load JS =============================-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery.scrollTo-min.js"></script>
+        <script src="js/jquery.nav.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

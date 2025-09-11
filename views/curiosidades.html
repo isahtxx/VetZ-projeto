@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <title>VetZ</title>
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilos personalizados -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="css/all.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link href="images/logoPNG.png" rel="shortcut icon">
+</head>
+
+    <body>
+        <!--Begin Header-->
+        <header class="header">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg">
+        
+                        <a href="index.html" rel="home">
+                            <img class="logomenu" src="images/Logo VETZ.svg" alt="VET Z" title="VetZ">
+                        </a>
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon">
+                                <i class="fas fa-bars"></i>
+                            </span>
+                        </button>
+        
+                        <div class="navbar-collapse collapse" id="navbarCollapse">
+                            <ul class="navbar-nav ml-auto 1  left-menu">
+                                <li><a href="./index.html">HOME PAGE</a></li>
+                                <li><a href="./sobreNOS.html">SOBRE NÓS</a></li>
+                                <li><a href="./Login.html">CURIOSIDADES</a></li>
+                                <li><a href="./Login.html">RECOMENDAÇÕES</a></li>
+                                <li><a href="./Login.html">VACINAÇÃO</a></li>
+                                <li><a class="btn btn-menu" href="./Login.html" role="button"><img class="imgperfil" src="images/perfil.svg"> SEU PERFIL</a></li>
+                            </ul> 
+                            
+                        </div>
+                    </nav>
+                </div> 
+            </nav>
+        </header>
+        <!--End Header-->
+
+        <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
+            
+    <!-- Conteúdo principal -->
+    <main>
+        <section class="youtube-section">
+            <h2>Vídeos</h2>
+
+        <div class="video-buttons">
+            <button class="recentes" onclick="mostrarRecentes()">Mais Recentes</button> <!-- evento para mostrar os mais recentes quando clicar nesse botão -->
+            <button class="antigos" onclick="mostrarAntigos()">Mais Antigos</button> <!-- evento para mostrar os mais antigos quando clicar nesse botão -->
+        </div>
+
+        <div id="recentes" class="video-grid ativo"></div>
+        <div id="antigos" class="video-grid"></div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="footerp1">Todos os direitos reservados <span id="footer-year"></span> © - VetZ </p>
+                </div>
+                <div class="col-md-1">
+                    <p class="instagram">
+                        <a><img href="#!" src="images/instagram.svg"></a>
+                </div>
+                <div class="col-md-1">
+                    <p class="email">
+                        <a><img href="#!" src="images/email.svg"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+<script src="https://apis.google.com/js/api.js"></script> <!-- carrega a API do YouTube -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.scrollTo-min.js"></script>
+<script src="js/jquery.nav.js"></script>
+<script src="js/scripts.js"></script> <!-- por último, onde está a função start() -->
+</body>
+</html>
