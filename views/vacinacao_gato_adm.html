@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+
+        <title>VetZ</title>
+        
+        <!-- Loading Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Loading código CSS -->
+        <link href="css/style.css" rel="stylesheet" media="screen and (color)">
+
+        <!-- Awsome Fonts -->
+        <link href="css/all.min.css" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link href="images/logoPNG.png" rel="shortcut icon">
+    </head>
+
+    <body>
+        <!--Begin Header-->
+        <header class="header">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg">
+        
+                        <a href="index.html" rel="home">
+                            <img class="logomenu" src="images/Logo VETZ.svg" alt="VET Z" title="VetZ">
+                        </a>
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon">
+                                <i class="fas fa-bars"></i>
+                            </span>
+                        </button>
+        
+                        <div class="navbar-collapse collapse" id="navbarCollapse">
+                            <ul class="navbar-nav ml-auto 1  left-menu">
+                                <li><a href="./index.html">HOME PAGE</a></li>
+                                <li><a href="./sobreNOS.html">SOBRE NÓS</a></li>
+                                <li><a href="./curiosidades.html">CURIOSIDADES</a></li>
+                                <li><a href="./recomendacoes.html">RECOMENDAÇÕES</a></li>
+                                <li><a href="./vacinacao.html">VACINAÇÃO</a></li>
+                                <li><a class="btn btn-menu" href="./perfil.html" role="button"><img class="imgperfil" src="images/perfil.svg"> SEU PERFIL</a></li>
+                            </ul> 
+                            
+                        </div>
+                    </nav>
+                </div> 
+            </nav>
+        </header>
+        <!--End Header-->
+
+
+        <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
+
+        <!-- Begin section 07 -->
+        <section class="section14" id="sec14">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Título -->
+                        <div class="sec14titleh2">
+                            <h2>Vacinas de Reforço Anual</h2>
+                        </div>
+
+                        <!-- Tabela -->
+                        <div class="containerTabela">
+                            <table class="table table-bordered text-center align-middle">
+                            <thead class="table-success">
+                                <tr>
+                                <th class="sec14th1">Vacinação</th>
+                                <th class="sec14th1">A partir de 9 semanas</th>
+                                <th class="sec14th1">12 semanas</th>
+                                <th class="sec14th1">A partir de 3 semanas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td class="sec14vacina">Polivalente V4 ou V5</td>
+                                <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">1ª DOSE</button></td>
+                                <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">2ª DOSE</button></td>
+                                <td></td>
+                                </tr>
+                                <tr>
+                                <td class="sec14vacina">
+                                    FELV<br><small class="textminsec14">desaconselhar se vacinado com V5</small>
+                                </td>
+                                <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">1ª DOSE</button></td>
+                                <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">2ª DOSE</button></td>
+                                <td></td>
+                                </tr>
+                                <tr>
+                                <td class="sec14vacina">ANTIRRÁBICA</td>
+                                <td></td>
+                                <td></td>
+                                <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">1ª DOSE</button></td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>     
+                </div>
+            </div>
+        </section>
+
+        <!-- End section 14 -->
+
+        <!-- Begin footer-->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="footerp1">
+                            Todos os direitos reservados <span id="footer-year"></span> © - VetZ </p>
+                    </div>
+
+                    <!-- <div class="col-md-1">
+                        <p class="instagram">
+                            <a><img href="#!" src="images/instagram.svg"></a>
+                    </div>
+                    <div class="col-md-1">
+                        <p class="email">
+                            <a><img href="#!" src="images/email.svg"></a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!--End footer-->
+
+
+        <!-- Load JS =============================-->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery.scrollTo-min.js"></script>
+        <script src="js/jquery.nav.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

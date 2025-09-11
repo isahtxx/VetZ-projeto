@@ -1,0 +1,1770 @@
+/*
+VetZ
+*/
+
+/* --- 
+Sequência do CSS Da Página: (use esses nomes a pesquisa rápida no código.)
+
+01. Geral
+02. Nav-Bar
+03. BEGIN PAGE HOME 
+    01. Section 01
+04. BEGIN PAGE SOBRE NÓS
+    01. Section 02
+    02. Section 03
+05. BEGIN PAGE PERFIL
+    01. Section 04
+    02. Section 04.1
+06. BEGIN PAGE CURIOSIDADES
+    01. Section 05
+07. BEGIN PAGE VACINAÇÃO CÃO
+    01. Section 06
+08. BEGIN PAGE VACINAÇÃO GATO
+    01. Section 07
+09. BEGIN PAGE RECOMENDAÇÕES
+    01. Section 08
+10. BEGIN PAGE TERMOS DE USO
+    01. Section 09
+11. BEGIN PAGE REGISTRAR
+    01. Section 10
+12. BEGIN PAGE CADASTRO
+    01. Section 11
+13. BEGIN PAGE LOGIN
+    01. Section 12
+ADICIONAR 07-VACINAÇÃO
+->alteração de páginas
+    
+14. Footer
+15. Media Queries
+
+
+
+/* ========================================================== */
+/* 			                01. BEGIN GERAL                       */
+/* ========================================================== */
+/*FONTS EMBEDADAS*/
+@font-face {
+  font-family:Poppins-Regular;
+  src: url("../webfonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family:Poppins-Bold;
+  src: url("../webfonts/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family:Poppins-Italic;
+  src: url("../webfonts/Poppins-Italic.ttf");
+}
+
+@font-face {
+  font-family:Poppins-Medium;
+  src: url("../webfonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family:Poppins-Black;
+  src: url("../webfonts/Poppins-Black.ttf");
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a:visited {
+ text-decoration: none;
+ outline: 0;
+}
+
+a:hover{
+ color: #E9F8DA;
+}
+/* ========================================================== */
+/*                       01 END GERAL                         */
+/* ========================================================== */
+
+/* ========================================================== */
+/* 			            02. BEGIN NAV-BAR                         */
+/* ========================================================== */
+.navbar {
+ width: 100%;
+ z-index: 9999;
+ padding:4px 0;
+}
+
+.navbar-brand{
+ font-family: 'Poppins-Regular';
+ font-size: 28px;
+ font-weight: 100;
+ color: #000!important;
+}
+
+.navbar-toggler {
+ padding: 5px 10px;
+ font-size: 24px;
+ line-height: 1;
+ background-color: transparent;
+ border-radius: 6px;
+ border: 1px solid #FEFFEF;
+}
+
+.navbar-toggler-icon {
+ width: 1.3em;
+ height: 1.3em;
+}
+
+.navbar-toggler-icon i {
+ color: #FEFFEF;
+ vertical-align: middle;
+}
+
+.navbar-fixed-top {
+ position: absolute!important;
+ background-color: #FEFFEF!important;
+ box-shadow: 0px 0px 25px 0px #2125295c !important; border-bottom: none;
+ transition: background-color 0.25s ease 0s;
+}
+
+.navbar-fixed-top.opaque {
+ position: fixed!important;
+ background-color: #FEFFEF!important;
+ border-bottom: 0px solid #FEFFEF;
+ transition: all 0.25s ease-in-out 0s;
+}
+
+.navbar-fixed-top .navbar-nav > li > a, .navbar-fixed-top .navbar-nav > li > a:hover{
+ color: #000!important;
+ -webkit-transition: all 0.5s ease;
+ -moz-transition: all 0.5s ease;
+ -o-transition: all 0.5s ease;
+ transition: all 0.5s ease;
+}
+
+/*.navbar-fixed-top .navbar-nav > li > a{
+ color: #fff !important;
+ font-size: 16px !important;
+ line-height: 10px !important;
+ padding: 10px 15px!important;
+ font-family: 'Poppins-Regular';
+ font-weight: 100;
+ letter-spacing: 1px;
+ text-transform: uppercase;
+}*/
+.navbar-nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    align-items: center;
+    justify-content: space-around;
+}
+a{
+  color: #000 !important;
+  font-size: 16px !important;
+  line-height: 10px !important;
+  padding: 10px 15px;
+  font-family: 'Poppins-Regular';
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.navbar-fixed-top .navbar-nav .current a {
+ color:#000!important;
+ -webkit-transition: all 0.5s ease;
+ -moz-transition: all 0.5s ease;
+ -o-transition: all 0.5s ease;
+ transition: all 0.5s ease;
+}
+
+.navbar-fixed-top.opaque .navbar-nav .current a {
+ color:#000!important;
+ -webkit-transition: all 0.5s ease;
+ -moz-transition: all 0.5s ease;
+ -o-transition: all 0.5s ease;
+ transition: all 0.5s ease;
+}
+
+.navbar-fixed-top .navbar-nav > li > a.discover-btn {
+ border: 1px solid #dd0d44;
+ color: #dd0d44!important;
+ background: transparent;
+ border-radius: 8px 8px;
+ padding: 12px 18px!important;
+ margin-left: 10px;
+ margin-right: 15px;
+ font-family:  'Poppins-Regular';
+}
+
+.navbar-fixed-top .navbar-nav > li > a.discover-btn:hover {
+ color: #000!important;
+ background: #55974A;
+ border: 1px solid #55974A;
+}
+
+.navbar-expand-lg .navbar-collapse {
+ display: flex !important;
+ flex-basis: auto;
+ justify-content: flex-end;
+}
+.imgperfil{
+ width: 28%;
+}
+
+.btn-menu, .btn-menu:hover {
+ color: #000;
+ background-color: #FEFFEF;
+ border-color: #FEFFEF;
+ padding: 0px !important;
+ border-radius: 25px;
+ font-family: 'Poppins-Regular';
+
+}
+
+R
+
+.left-menu{
+   margin-right: 32px;
+}
+.logomenu {
+  height: 80px;
+  width: 127%;
+  margin: 0 0 -34px 0
+}
+
+/* ========================================================== */
+/*                   02. END NAV-BAR                          */
+/* ========================================================== */
+
+/* ========================================================== */
+/* 		            03. BEGIN PAGE HOMEPAGE                     */
+/* ========================================================== */
+
+/*Begin Section 01*/
+.section01 {
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 580px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sec01titleh1{
+  font-family: 'Poppins-Bold';
+  font-size: 40px;
+  line-height: 52px;
+  margin: 0;
+  padding: 68px 0 50px 0;
+  text-align: center;
+  color: #038654;
+}
+
+.sec01ph1{
+  font-family: 'poppins-Regular';
+  font-size: 17px;
+  line-height: 26px;
+  text-align: justify;
+  padding: 0 72px 20px 0;
+  margin: 0;
+}
+
+.sec01phinte{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0;
+  padding: 0px 0 20px 0;
+  text-align: center;
+}
+
+.card1-1, .card1-2, .card1-3, .card1-4{
+  width: 18rem;
+ }
+ .card1-1 {
+  position: absolute;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: none;
+  border-radius: .25rem;
+ }
+ 
+ .card1-2 {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: none;
+  border-radius: .25rem;
+  align-content: flex-end;
+  right: -308px;
+ }
+ 
+ .card1-3 {
+  position: absolute;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: none;
+  border-radius: .25rem;
+  margin: -256px 0 0 615px;
+ }
+ 
+ .card1-4 {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: none;
+  border-radius: .25rem;
+  align-content: flex-end;
+  margin: -256px 0 0 920px;
+ }
+
+.card-img-top1 {
+  width: 150px;
+  height: 150px; 
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+}
+
+.card1-1:hover{
+  transform: scale(1.05);
+}
+.card1-2:hover{
+  transform: scale(1.05);
+}
+.card1-3:hover{
+  transform: scale(1.05);
+}
+.card1-4:hover{
+  transform: scale(1.05);
+}
+ /*End Section 01*/
+
+/* ========================================================== */
+/*                  03. END PAGE HOME                         */
+/* ========================================================== */
+
+/* ========================================================== */
+/*                04. BEGIN PAGE SOBRE NÓS                    */
+/* ========================================================== */
+
+/*Begin Section 02*/
+.section02 {
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 500px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+ }
+ 
+ .sec02titleh1 {
+  font-family: 'Poppins-Bold';
+  font-size: 40px;
+  line-height: 52px;
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 68px 0 10px 0;
+  text-align: center; /* Centraliza o texto dentro do elemento */
+  color: #038654;
+}
+ 
+ .sec02ph1 {
+  font-family: 'poppins-Regular';
+  font-size: 1rem;
+  line-height: 26px;
+  text-align: justify;
+  padding: 0 0 20px 0; /* Remova o padding lateral */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  max-width: 800px; /* Opcional: Define uma largura máxima para o texto */
+}
+ 
+ /* .sec02ph2{
+  font-family: 'poppins-Regular';
+  font-size: 17px;
+  line-height: 26px;
+  text-align: left;
+  padding: 0 52px 20px 0;
+  margin: 0;
+ } */
+/*End Section 02*/
+
+/*Begin Section 03*/
+.section03{
+  position: relative;
+  padding-top: 55px;
+  padding-bottom: 700px;
+  background: #e9f8da;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sec03titleh2 {
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  line-height: 52px;
+  padding: 0px 0 35px 0;
+  text-align: center;
+  color: #038654;
+  margin: 0 auto;
+}
+ 
+ .sec03phinte{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0;
+  text-align: center;
+ }
+ 
+ .bloco1, .bloco3{
+  text-align: left;
+  
+ }
+ .bloco2, .bloco4{
+  text-align: right;
+  margin-top: -196px;
+  margin-bottom: 23px;
+ }
+ 
+ 
+ /* Fotos dos integrantes */
+.card-img-top {
+  width: 150px; 
+  height: 150px; 
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto; 
+  display: block;
+}
+/* Grid para os integrantes */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas na primeira linha */
+    gap: 20px; /* Espaçamento entre os itens */
+    justify-items: center; /* Centraliza os itens horizontalmente */
+    margin-top: 20px;
+}
+
+/* Grid para a primeira linha */
+.grid-container-line1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 20px; /* Espaçamento entre os itens */
+    justify-items: center; /* Centraliza os itens horizontalmente */
+    margin-top: 20px;
+}
+
+/* Grid para a segunda linha */
+.grid-container-line2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    gap: 20px; /* Espaçamento entre os itens */
+    justify-items: center; /* Centraliza os itens horizontalmente */
+    margin-top: 20px;
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.grid-item img {
+    width: 150px; /* Tamanho das imagens */
+    height: 150px;
+    border-radius: 50%; /* Torna as imagens redondas */
+    object-fit: cover; /* Ajusta a imagem ao círculo */
+    margin-bottom: 10px;
+}
+
+.grid-item-img1 {
+    text-align: center;
+    margin-left: 185px;
+}
+
+.grid-item-img2 {
+    text-align: center;
+    margin-right: 185px;
+}
+
+.grid-item-img2z {
+    margin-left: -185px; /* Ajuste o valor conforme desejar */
+}
+
+.sec03phinte {
+    font-family: 'Poppins-Bold';
+    font-size: 17px;
+    line-height: 26px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
+    .grid-container,
+    .grid-container-line1,
+    .grid-container-line2
+     {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas menores */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid-container,
+    .grid-container-line1,
+    .grid-container-line2 {
+        grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+    }
+
+    .grid-item img {
+        width: 120px; /* Reduz o tamanho das imagens */
+        height: 120px;
+    }
+}
+ /*End Section 03*/
+
+ /* ========================================================== */
+ /* 		             04. END PAGE SOBRE NÓS                    */
+ /* ========================================================== */
+
+ /* ========================================================== */
+ /* 		            05. BEGIN PAGE PERFIL                      */
+ /* ========================================================== */
+/* Begin Section 04*/
+.section04 {
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 590px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sec04titleh2{
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  line-height: 52px;
+  padding: 0px 0 35px 0;
+  text-align: left;
+  color: #038654;
+  margin: 0 auto;
+}
+
+.sec04alterar{
+  font-family: 'Poppins-Regular';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0 0 0 115px;
+  text-align: left;
+}
+
+.sec04phtiltle{
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  color: #038654;
+  line-height: 26px;
+  margin: 15px 50px 50px 0;
+  text-align: center;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  display: block;
+  font-size: 16px;
+}
+
+.card-img-top-perfil{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 27px 0 8px 100px;
+  display: block;
+}
+
+.dadoPerfilsec04{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0 0 0 -78px;
+  text-align: left;
+}
+
+.sec04editar{
+  font-family: 'Poppins-Regular';
+  text-decoration: underline;
+  color: #038654;
+  font-size: 17px;
+  text-align: right;
+  text-transform: none;
+}
+/* End section 04 */
+
+/* Begin Section 04.1 */
+.section04-1 {
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 590px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sec04-1titleh3{
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  line-height: 54px;
+  padding: 10px 0 35px 0;
+  text-align: center;
+  color: #038654;
+  margin: 0 auto;
+}
+
+.sec04Pet1{
+  font-family: 'Poppins-Bold';
+  padding: 0 929px 35px 150px;
+  color: #038654;
+  margin: 0 auto;
+}
+
+.sec04-1ph1{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  color: #038654;
+  line-height: 26px;
+  margin: 0 0 0 16px;
+  text-align: left;
+}
+
+.addPet{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0;
+  text-align: left;
+}
+
+.descricaoAnimal{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  line-height: 26px;
+  margin: 0 0 0 16px;
+  text-align: left;
+}
+
+.pet-card {
+  background-color: #e5e5e5;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 0 287px 0 0;
+  margin-bottom: 20px;
+}
+
+.botaosec04 {
+  display: inline-block;
+  padding: 10px 9px;
+  margin: 0 0 5px 0;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  font-family: 'Poppins-Regular';
+  font-size: 10px;
+}
+
+.editar {
+  background-color: #007BFF; /* Azul */
+}
+
+.trocar-foto {
+  background-color: #6c757d; /* Cinza */
+}
+
+.excluir {
+  background-color: #dc3545; /* Vermelho */
+}
+
+.pet-icon{
+  width: 220px;
+  height: 260px;
+  border-radius: 5%;
+  object-fit: cover;
+  margin: 5px 0 5px 10px;
+  display: block;
+}
+
+.pet-icon {
+  font-size: 40px;
+  margin-right: 15px;
+}
+
+.card-header {
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 0 287px 0 200px;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #e5e5e5;
+}
+
+.tabelaAnimal {
+    background-color: #e5e5e5;
+    text-align: left;
+}
+
+.tabelaInfo {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tabelaInfo td {
+    padding: 10px 16px;
+    vertical-align: middle;
+}
+
+.tabelaInfo:nth-child(odd) {
+    background-color: #e5e5e5;
+}
+
+.tabelaInfo img {
+    border-radius: 5%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 5px;
+    background-color: #0d6efd;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background-color: #0b5ed7;
+}
+
+.tabelaInfo button {
+    padding: 6px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.tabelaInfo button:hover {
+    background-color: #bb2d3b;
+}
+
+/* User PHP */
+.secUser{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 590px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* PERFIL PET */
+
+.sectionPet{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 650px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.dadoPerfilsecPet1{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0 10px 0 0;
+  text-align: left;
+}
+
+.dadoPerfilsecPet{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0 0 0 -25px;
+  text-align: left;
+}
+
+.card-img-top-perfilPet{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 0 5px 121px;
+  display: block;
+}
+
+.secPeteditar{
+  font-family: 'Poppins-Regular';
+  text-decoration: underline;
+  color: #038654;
+  font-size: 17px;
+  text-align: right;
+  text-transform: none;
+  margin: -15px 0 0 0;
+}
+
+ /* ========================================================== */
+ /* 		             05. END PAGE PERFIL                       */
+ /* ========================================================== */
+
+ /* ========================================================== */
+ /* 		           06. BEGIN PAGE CURIOSIDADES                 */
+ /* ========================================================== */
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 25px;
+  margin: 0;
+}
+
+.video-grid img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.youtube-section {
+  margin-top: 100px; 
+}
+
+  .youtube-section p {
+  font-family: 'Poppins-Bold', Arial, sans-serif;
+  font-size: 16px;
+  color: #000000;
+  margin-top: 8px;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+ /* ========================================================== */
+ /* 		             06. END PAGE CURIOSIDADES                 */
+ /* ========================================================== */
+
+ /* ========================================================== */
+ /* 		             06. BEGIN PAGE VACINAÇÃO                  */
+ /* ========================================================== */
+/*Begin Section 13*/
+.section13{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 500px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+/*End Section 13*/
+ /* ========================================================== */
+ /* 		             06. END PAGE VACINAÇÃO                    */
+ /* ========================================================== */
+
+ /* ========================================================== */
+ /* 		           07. BEGIN PAGE VACINAÇÃO CÃO                */
+ /* ========================================================== */
+/*Begin Section 06*/
+.section06{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 500px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sec06titleh2{
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  line-height: 52px;
+  padding: 0px 0 35px 0;
+  text-align: center;
+  color: #038654;
+  margin: 0 auto;
+}
+
+.sec06th1{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+
+.sec06vacina{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+/*End Section 06*/
+
+ /* ========================================================== */
+ /* 		             07. END PAGE VACINAÇÃO CÃO                */
+ /* ========================================================== */
+
+ /* ========================================================== */
+ /* 		           08. BEGIN PAGE VACINAÇÃO GATO               */
+ /* ========================================================== */
+/*Begin Section 07*/
+.section07{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 500px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sec07titleh2{
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  line-height: 52px;
+  padding: 0px 0 35px 0;
+  text-align: center;
+  color: #038654;
+  margin: 0 auto;
+}
+
+.sec07titleh2{
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  line-height: 52px;
+  padding: 0px 0 35px 0;
+  text-align: center;
+  color: #038654;
+  margin: 0 auto;
+}
+
+.sec07th1{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+
+.textminsec07{
+  font-family: 'Poppins-Regular';
+  font-size: 12px;
+  text-align: center;
+}
+
+.sec07vacina{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+
+.sec07descvacina{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+
+.doses{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Caixa de especificações da vacina */
+.modalTitle{
+  font-family: 'Poppins-Bold';
+  font-size: 16px;
+  text-align: center;
+}
+
+.modalBody{
+  padding: 0 20px 0 20px;
+}
+
+.modalContent{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+    margin: 93px 0 0 0;
+}
+
+.vacinaNome{
+  font-family: 'Poppins-Bold';
+  font-size: 16px;
+  text-align: left;
+}
+
+.vacinaDose{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: left;
+}
+
+.especificacoes{
+  font-family: 'Poppins-Bold';
+  font-size: 16px;
+  text-align: left;
+}
+
+.sec07Tabela{
+  background-color: #cde8c5;
+  text-align: center;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #2d2d2d;
+}
+
+.modal-backdrop.show {
+  opacity: 0 !important; /* Remove o escurecimento */
+  background-color: transparent !important;
+}
+
+
+/*End Section 07*/
+ /* ========================================================== */
+ /* 		             08. END PAGE VACINAÇÃO GATO               */
+ /* ========================================================== */
+
+ /* ========================================================== */
+ /* 		           09. BEGIN PAGE RECOMENDAÇÕES                */
+ /* ========================================================== */
+
+ /* Centralizar o cachorro animado na seção de recomendações */
+.section08 {
+  position: relative;
+  padding-top: 115px;
+  padding-bottom: 562px;
+  background: #e9f8da;
+  background: url(../images/cena-de-uma-fazenda-de-galinhas-com-aves-e-pessoas.jpg) top center no-repeat;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Mantém o conteúdo centralizado horizontalmente */
+}
+
+.dog {
+  display: block;
+  margin: 40px auto 0 auto;
+  position: relative;
+  width: 12vmax; /* Reduzido de 22.5vmax */
+  height: 4.5vmax; /* Reduzido de 8.25vmax */
+}
+
+/* Barra de Pesquisa */
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 700px;      /* Aumenta a largura máxima */
+  width: 100%;           /* Ocupa toda a largura disponível */
+  margin: 10px auto 0;   /* ele Centraliza horizontalmente e afasta do topo */
+}
+
+.input {
+  width: 100%;
+  height: 48px;          /* Aumenta a altura */
+  line-height: 32px;
+  font-size: 1.2rem;     /* Aumenta o tamanho da fonte */
+  padding: 0 1rem;
+  padding-left: 3rem;    /* Espaço maior para o ícone */
+  border: 2px solid transparent;
+  border-radius: 24px;   /* Deixa as bordas mais arredondadas */
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: .3s ease;
+}
+
+.input::placeholder {
+  color: #9e9ea7;
+}
+
+.input:focus, input:hover {
+  outline: none;
+  border-color: rgba(76, 234, 134, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(51, 157, 90, 0.4);
+}
+
+.icon {
+  position: absolute;
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
+}
+
+ 
+ /* ========================================================== */
+ /* 		             09. END PAGE RECOMENDAÇÕES                */
+ /* ========================================================== */
+
+ /* ========================================================== */
+ /* 		           10. BEGIN PAGE TERMOS DE USO                */
+ /* ========================================================== */
+.sectionTermoUso{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 500px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+ body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #feffef;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.voltar {
+  text-decoration: none;
+  background-color: #7adea7;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+main {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.termos-scroll {
+  width: 80%;
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  padding: 15px;
+  font-style: italic;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  margin: 0 auto;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input {
+  display: none;
+}
+
+.checkmark {
+  height: 24px;
+  width: 24px;
+  background-color: #fff;
+  border: 2px solid #7adea7;
+  border-radius: 6px;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.checkbox-container:hover .checkmark {
+  transform: scale(1.05);
+}
+
+.checkbox-container input:checked + .checkmark {
+  background-color: #7adea7;
+  border-color: #7adea7;
+}
+
+.checkbox-container input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.mensagem-erro {
+  color: #d9534f;
+  font-size: 0.95rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.next {
+  position: absolute;
+  right: 30px;
+  bottom: 70px;
+  font-size: 1.8rem;
+  background-color: #5ab584;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next:hover {
+  background-color: #317955;
+  transform: scale(1.1);
+}
+
+footer {
+  background-color: #7adea7;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-family: 'Poppins-Bold';
+  color: #038654;
+  text-align: center;
+}
+
+ /* ========================================================== */
+ /* 		             10. END PAGE TERMOS DE USO                */
+ /* ========================================================== */
+
+ /* ========================================================== */
+ /* 		           11. BEGIN PAGE REGISTRAR                    */
+ /* ========================================================== */
+ /* ========================================================== */
+ /* 		             11. END PAGE REGISTRAR                    */
+ /* ========================================================== */
+
+ /* ========================================================== */
+ /* 		           12. BEGIN PAGE CADASTRO                     */
+ /* ========================================================== */
+
+ /* Reset e base */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f9ec;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Cabeçalho */
+  .topo {
+    background-color: #ffffff;
+    border-bottom: 2px solid #d8e8cc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+  }
+  
+  .logo-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo-box img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .titulo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4b7942;
+  }
+  
+  /* Botão voltar */
+  .voltar {
+    background-color: #d4f1c5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #2d5c24;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .voltar:hover {
+    background-color: #bde9ad;
+  }
+  
+  /* Conteúdo principal */
+  main {
+    flex: 1;
+  }
+  
+  /* Caixa de cadastro */
+  .cadastro-box {
+    background-color: white;
+    width: 450px;
+    margin: 50px auto;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .cadastro-title {
+    color: #3ac00a;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 20px;
+  }
+  
+  input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .cadastrar {
+    background-color: #b6e9a4;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .cadastrar:hover {
+    background-color: #a5db93;
+  }
+  
+  /* Rodapé */
+  .rodape {
+    text-align: center;
+    padding: 15px;
+    background-color: #eaf7dc;
+    color: #4a6542;
+    font-size: 14px;
+    border-top: 1px solid #cfe8b6;
+  }  
+ /* ========================================================== */
+ /* 		             12. END PAGE CADASTRO                     */
+ /* ========================================================== */
+
+/* ========================================================== */
+ /* 		            13. BEGIN PAGE LOGIN                       */
+ /* ========================================================== */
+ /* Reset e base */
+ html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f9ec;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho */
+.topo {
+  background-color: #ffffff;
+  border-bottom: 2px solid #d8e8cc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  flex-wrap: wrap;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-box img {
+  width: 40px;
+  height: 40px;
+}
+
+.titulo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4b7942;
+}
+
+/* Botão voltar */
+.voltar {
+  background-color: #d4f1c5;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #2d5c24;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.voltar:hover {
+  background-color: #bde9ad;
+}
+
+/* Conteúdo principal */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Caixa de login */
+.login-box {
+  background-color: white;
+  width: 100%;
+  max-width: 450px;
+  margin: 20px;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-title {
+  color: #3ac00a;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.entrar {
+  background-color: #b6e9a4;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.entrar:hover {
+  background-color: #a5db93;
+}
+
+.links {
+  margin-top: 15px;
+}
+
+.links a {
+  color: #005f3c;
+  text-decoration: none;
+  font-size: 14px;
+  gap: 10px;
+}
+
+/* Gif de cachorro e gato */
+.bichinho {
+  width: 100%;
+  max-width: 150px;
+  margin: 15px auto 0;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Rodapé */
+.rodape {
+  text-align: center;
+  padding: 15px;
+  background-color: #eaf7dc;
+  color: #4a6542;
+  font-size: 14px;
+  border-top: 1px solid #cfe8b6;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .topo {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .voltar {
+      width: 100%;
+      margin-top: 10px;
+  }
+
+  .login-box {
+      padding: 20px;
+  }
+
+  .login-title {
+      font-size: 1.25rem;
+  }
+
+  input[type="email"],
+  input[type="password"],
+  .entrar {
+      font-size: 0.9rem;
+  }
+
+  .bichinho {
+      max-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topo {
+      padding: 10px;
+  }
+
+  .titulo {
+      font-size: 18px;
+  }
+
+  .login-box {
+      padding: 15px;
+  }
+
+  .login-title {
+      font-size: 1rem;
+  }
+
+  input[type="email"],
+  input[type="password"],
+  .entrar {
+      font-size: 0.8rem;
+  }
+
+  .bichinho {
+      max-width: 100px;
+  }
+}
+ /* ========================================================== */
+ /*                     13. END PAGE LOGIN                     */
+ /* ========================================================== */
+ /* ========================================================== */
+ /*                     13. BEGIN PAGE RECUPERAR                 */
+ /* ========================================================== */
+
+ /* ========================================================== */
+ /* 			             14. BEGIN FOOTER                         */
+ /* ========================================================== */
+ .footer{
+  padding: 12px 0 10px 0;
+  background-color: #B5E7A0;
+  border-top: 1px solid #B5E7A0;
+ }
+ 
+ .footerp1 {
+  color: #fff;
+  font-size: 12px;
+  line-height: 0px;
+  letter-spacing: 1px;
+  text-align: left;
+  margin-top: 13px;
+  font-family: 'Poppins-Regular';
+ }
+
+.instagram{
+  margin: 0 0 0 557px;}
+
+.email{
+  margin: 0 0 0 493px;
+}
+
+ /* ========================================================== */
+ /*                     14. END FOOTER                         */
+ /* ========================================================== */
+ 
+ /* ========================================================== */
+ /* 			         15. BEGIN MEDIA QUERIES                      */
+ /* ========================================================== */
+ 
+ /*Dispositivos small*/
+ @media screen and (max-width: 600px) {
+  /*Begin Nav-Bar*/
+  .navbar-fixed-top {
+    position: absolute !important;
+    background-color: #FEFFEF !important;
+    box-shadow: 0px 0px 25px 0px #2125295c !important;
+    border-bottom: none;
+    transition: background-color 0.25s ease 0s;
+  }
+ 
+  .left-menu{
+    margin-left: 0px !important;
+    margin-top: 32px;
+  }
+  /*End Nav-Bar*/
+
+  /*Begin HOME PAGE*/
+  .section01 {
+    padding-top: 108px;
+    padding-bottom: 580px;
+    background: #FEFFEF;
+    background-size: cover;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+
+
+  /*End HOME PAGE*/
+
+  /*Begin PAGE SOBRE NÓS*/
+  /*End PAGE SOBRE NÓS*/
+
+  /*Begin PAGE PERFIL*/
+  /*End PAGE PERFIL*/
+
+  /*Begin PAGE CURIOSIDADES*/
+  /*End PAGE CURIOSIDADES*/
+
+  /*Begin PAGE VACINAÇÃO CÃO*/
+  /*End PAGE VACINAÇÃO CÃO*/
+
+  /*Begin PAGE VACINAÇÃO GATO*/
+  /*End PAGE VACINAÇÃO GATO*/
+
+  /*Begin PAGE RECOMENDAÇÕES*/
+  /*End PAGE RECOMENDAÇÕES*/
+
+  /*Begin PAGE TERMOS DE USO*/
+  /*End PAGE TERMOS DE USO*/
+
+  /*Begin PAGE REGISTRAR*/
+  /*End PAGE REGISTRAR*/
+
+  /*Begin PAGE CADASTRO*/
+  /*End PAGE CADASTRO*/
+
+  /*Begin PAGE LOGIN*/
+  /*End PAGE LOGIN*/
+
+
+  /*Begin footer*/
+  .footerp1 {
+    margin-bottom: 5px;
+    line-height: 20px;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  /*End footer*/
+}
+ /* ========================================================== */
+ /*                     15. END MEDIA QUERIES                  */
+ /* ========================================================== */
