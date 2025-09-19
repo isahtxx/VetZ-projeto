@@ -42,10 +42,10 @@
                             <ul class="navbar-nav ml-auto 1  left-menu">
                                 <li><a href="./index.html">HOME PAGE</a></li>
                                 <li><a href="./sobreNOS.html">SOBRE NÓS</a></li>
-                                <li><a href="./curiosidades.html">CURIOSIDADES</a></li>
-                                <li><a href="./recomendacoes.html">RECOMENDAÇÕES</a></li>
-                                <li><a href="./vacinacao.html">VACINAÇÃO</a></li>
-                                <li><a class="btn btn-menu" href="./perfil.html" role="button"><img class="imgperfil" src="images/perfil.svg"> SEU PERFIL</a></li>
+                                <li><a href="login.php">CURIOSIDADES</a></li>
+                                <li><a href="login.php">RECOMENDAÇÕES</a></li>
+                                <li><a href="login.php">VACINAÇÃO</a></li>
+                                <li><a class="btn btn-menu" href="./perfil_usuario.html" role="button"><img class="imgperfil" src="images/perfil.svg"> SEU PERFIL</a></li>
                             </ul> 
                             
                         </div>
@@ -58,19 +58,29 @@
 
         <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
 
-        <!-- Begin section 06 -->
+        <!-- Begin section 14 -->
         <section class="section14" id="sec14">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <!-- Título -->
+                    <div class="col-md-2">
+                        <a class="animal-card-btn-no-bg" href="./perfil_pet.html">
+                            <div class="animal-card-img">
+                                <img src="./images/imgMane.png" alt="Mané">
+                                <p class="sec14phinte">Mané (Luck)</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-8">
                         <div class="sec14titleh2">
                             <h2>Vacinas de Reforço Anual</h2>
+                            <p class="sec14subtitle">Acompanhe as principais vacinas e registre as doses do seu pet</p>
                         </div>
+                    </div>
 
-                        <!-- Tabela -->
-                        <div class="containerTabela">
-                            <table class="table table-bordered text-center align-middle">
+                    <div class="col-md-12">
+                        <div class="carteirinhavacina">
+                            <table class="tablevacinacao">
                             <thead class="table-success">
                                 <tr>
                                 <th class="sec14th1">Vacinação</th>
@@ -88,7 +98,7 @@
                                 </tr>
                                 <tr>
                                 <td class="sec14vacina">Gripe</td>
-                                <td></td>
+                                <td>—</td>
                                 <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">1ª DOSE</button></td>
                                 <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">2ª DOSE</button></td>
                                 </tr>
@@ -96,17 +106,18 @@
                                 <td class="sec14vacina">Giárdia</td>
                                 <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">1ª DOSE</button></td>
                                 <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">2ª DOSE</button></td>
-                                <td></td>
+                                <td>—</td>
                                 </tr>
                                 <tr>
                                 <td class="sec14vacina">Antirrábica</td>
-                                <td></td>
-                                <td></td>
-                                <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">1 DOSE</button></td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td><button class="btn btn-outline-success" onclick="toggleCheck(this)">1ª DOSE</button></td>
                                 </tr>
                             </tbody>
                             </table>
                         </div>
+                    </div>
                         
                     </div>     
                 </div>
