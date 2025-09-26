@@ -57,66 +57,68 @@
 
 
         <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
-        <!-- Begin Section 07 -->
-        <section class="section07" id="sec07">
+
+        <!-- Begin section 14 -->
+        <section class="section14" id="sec14">
             <div class="container">
                 <div class="row">
+                    <div class="col-md-2">
+                        <a class="animal-card-btn-no-bg" href="./perfil_pet.html">
+                            <div class="animal-card-img">
+                                <img src="./images/imgMane.png" alt="Mané">
+                                <p class="sec14phinte">Mané (Luck)</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="sec14titleh2">
+                            <h2>Vacinas de Reforço Anual</h2>
+                            <p class="sec14subtitle">Acompanhe as principais vacinas e registre as doses do seu pet</p>
+                        </div>
+                    </div>
+
                     <div class="col-md-12">
-                        <div class="container">
-                            <h2 class="sec07titleh2">Vacinas de reforço anual</h2>
-                            <table class="table table-bordered tabela-vacinas bg-white">
-                            <thead class="table-success text-center">
+                        <div class="carteirinhavacina">
+                            <table class="tablevacinacao">
+                            <thead class="table-success">
                                 <tr>
-                                <th class="sec07th1">VACINAÇÃO</th>
-                                <th class="sec07th1">A PARTIR DE 9 SEMANAS</th>
-                                <th class="sec07th1">12 SEMANAS</th>
-                                <th class="sec07th1">A PARTIR DE 3 MESES</th>
+                                <th class="sec14th1">Vacinação</th>
+                                <th class="sec14th1">A partir de 6 semanas</th>
+                                <th class="sec14th1">9 semanas</th>
+                                <th class="sec14th1">A partir de 12 semanas</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                <td class="sec07vacina">Polivalente V4 ou V5</td>
+                                <td class="sec14vacina">Polivalente V8 ou V10</td>
                                 <td onclick="abrirPopup('Polivalente V4 ou V5', '1ª DOSE')" class="doses">✅<br>1ª DOSE</td>
                                 <td onclick="abrirPopup('Polivalente V4 ou V5', '2ª DOSE')" class="doses">✅<br>2ª DOSE</td>
+                                <td onclick="abrirPopup('Polivalente V4 ou V5', '2ª DOSE')" class="doses"><br>2ª DOSE</td>
                                 <td></td>
                                 </tr>
                                 <tr>
-                                <td class="sec07vacina">FELV <br><small>(se vacinado com V5)</small></td>
+                                <td class="sec14vacina">Gripe</td>
                                 <td onclick="abrirPopup('FELV', '1ª DOSE')" class="doses">✅<br>1ª DOSE</td>
-                                <td onclick="abrirPopup('FELV', '2ª DOSE')" class="doses">✅<br>2ª DOSE</td>
+                                <td onclick="abrirPopup('FELV', '2ª DOSE')" class="doses"><br>2ª DOSE</td>
                                 <td></td>
                                 </tr>
                                 <tr>
-                                <td class="sec07vacina">ANTIRRÁBICA</td>
+                                <td class="se14vacina">Giárdia</td>
                                 <td></td>
                                 <td></td>
                                 <td onclick="abrirPopup('ANTIRRÁBICA', '1ª DOSE')" class="doses">✅<br>1ª DOSE</td>
                                 </tr>
                             </tbody>
                             </table>
-
-                        <!-- Popup -->
-                            <div class="modal fade" id="vacinaModal" tabindex="-1" aria-labelledby="vacinaModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                            <div class="modal-ontent modalContent">
-                                <div class="modal-header bg-success text-white">
-                                <h5 class="modal-title modalTitle" class="modalTitle" id="vacinaModalLabel">Detalhes da Vacinação</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                                </div>
-                                <div class="modal-body modalBody">
-                                <p><strong class="vacinaNome">Vacina:</strong> <span id="vacinaNome"></span></p>
-                                <p><strong class="vacinaDose">Dose:</strong> <span id="vacinaDose"></span></p>
-                                <p><strong class="especificacoes">Data da aplicação:</strong> 12/04/2025</p>
-                                <p><strong class="especificacoes">Local da aplicação:</strong> Clínica VetZ - Rua Exemplo, 123</p>
-                                </div>
-                            </div>
-                            </div>
                         </div>
                     </div>
+                        
+                    </div>     
                 </div>
             </div>
         </section>
-        <!-- End Section 07 -->
+        <!-- End Section 14 -->
 
         <!-- Begin footer-->
         <div class="footer">
@@ -126,6 +128,7 @@
                         <p class="footerp1">
                             Todos os direitos reservados <span id="footer-year"></span> © - VetZ </p>
                     </div>
+
                     <!-- <div class="col-md-1">
                         <p class="instagram">
                             <a><img href="#!" src="images/instagram.svg"></a>
@@ -141,7 +144,6 @@
 
 
         <!-- Load JS =============================-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquery.scrollTo-min.js"></script>
         <script src="js/jquery.nav.js"></script>

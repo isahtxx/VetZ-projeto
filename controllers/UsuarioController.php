@@ -17,7 +17,7 @@ class UsuarioController {
         $ok = $model->cadastrar($dados['nome'], $dados['email'], $dados['senha']);
 
         if ($ok) {
-            header('Location: ../views/login.php'); 
+            header('Location: ../vetz/loginForm'); 
             exit;
         } else {
             echo "Erro ao cadastrar.";
@@ -34,7 +34,7 @@ class UsuarioController {
         if ($usuario) {
             session_start();
             $_SESSION['usuario'] = $usuario;
-            header('Location: ../views/perfil.php');
+            header('Location: ../vetz/views/perfil_usuario.php');
             exit;
         } else {
             echo "Credenciais inválidas.";

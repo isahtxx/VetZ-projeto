@@ -173,7 +173,7 @@ switch ($request) {
         break;
 
     case '/projeto/vetz/perfil':
-        // Adicione a lógica se necessário
+
         break;
 
     case '/projeto/vetz/pets-exibir':

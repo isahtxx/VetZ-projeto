@@ -84,12 +84,19 @@ const canaisVeterinarios = [
 function mostrarRecentes() {
     document.getElementById('recentes').classList.add('ativo');
     document.getElementById('antigos').classList.remove('ativo');
+
+    document.querySelector('.video-buttons .recentes').classList.add('active');
+    document.querySelector('.video-buttons .antigos').classList.remove('active');
 }
 
 function mostrarAntigos() {
     document.getElementById('antigos').classList.add('ativo');
     document.getElementById('recentes').classList.remove('ativo');
+
+    document.querySelector('.video-buttons .antigos').classList.add('active');
+    document.querySelector('.video-buttons .recentes').classList.remove('active');
 }
+
 
 /* ========================================================== */
 /* Função para carregar a API do YouTube                      */
