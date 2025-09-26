@@ -19,7 +19,7 @@
             <input type="number" id="idade" name="idade"><br><br>
 
             <label for="porte">Porte:</label>
-            <select type="text" id="porte" name="porte">
+            <select type="text" id="porte" name="porte" required>
                 <option value="">Selecione</option>
                 <option value="pequeno">Pequeno</option>
                 <option value="medio">Médio</option>
@@ -37,7 +37,7 @@
             </select>
             
             <label>Imagem do Pet:</label>
-            <input type="file" name="imagem" accept="image/*" required>
+            <input type="file" name="imagem" accept="image/*">
 
             <input type="submit" value="Cadastrar Pet">
     </form>
