@@ -22,7 +22,7 @@
   <main>
     <div class="login-box">
       <h2 class="login-title">LOGIN</h2>
-      <form action="/projeto/vetz/views/perfil_usuario.html" method="POST">
+      <form action="/projeto/vetz/login" method="POST">
     <input name="email" type="email" placeholder="Email" required>
     <input name="senha" type="password" placeholder="Senha" required>
     <button type="submit">Entrar</button>
