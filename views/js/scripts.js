@@ -45,10 +45,9 @@ $(window).on('load', function(){
 	}
 
 
-	/* ========================================================== */
-	/*   SmoothScroll                                             */
-	/* ========================================================== */
-	
+/* ========================================================== */
+/*   SmoothScroll                                             */
+/* ========================================================== */
 	$(".navbar-nav li a, a.scrool").on('click', function(e) {
 		
 		var full_url = this.href;
@@ -64,10 +63,9 @@ $(window).on('load', function(){
 
 });
 
-	/* ========================================================== */
-	/*   API Youtube - Vídeos Atuais e Antigos - ChatGPT          */
-	/* ========================================================== */
-
+/* ========================================================== */
+/*   API Youtube - Vídeos Atuais e Antigos - ChatGPT          */
+/* ========================================================== */
 // Defina sua chave de API do YouTube aqui
 const apiKey = 'AIzaSyCK_SS_gw9xG9m5xAo3aO6dZ-6sWqWaK0w';
 
@@ -96,7 +94,6 @@ function mostrarAntigos() {
     document.querySelector('.video-buttons .antigos').classList.add('active');
     document.querySelector('.video-buttons .recentes').classList.remove('active');
 }
-
 
 /* ========================================================== */
 /* Função para carregar a API do YouTube                      */
@@ -178,7 +175,7 @@ function displayVideos(videos) {
 }
 
 /* ========================================================== */
-/* Função chamada quando a API é carregada                   */
+/* Função chamada quando a API é carregada                    */
 /* ========================================================== */
 function start() {
     gapi.load('client', loadYouTubeAPI);
@@ -187,9 +184,9 @@ function start() {
 // Inicia a API quando a página carregar
 window.onload = start;
 
-	/* ========================================================== */
-	/*   Pagina de vacinação de Cão - Check das doses ADM         */
-	/* ========================================================== */
+/* ========================================================== */
+/*   Pagina de vacinação de Cão - Check das doses ADM         */
+/* ========================================================== */
 function toggleCheck(button) {
   button.classList.toggle('checked');
   if (button.classList.contains('checked')) {
@@ -212,10 +209,9 @@ function toggleCheck(button) {
   }
 }
 
-
-	/* ========================================================== */
-	/*   Pagina de vacinação de Gato - Visualização das vacinas   */
-	/* ========================================================== */
+/* ========================================================== */
+/*   Pagina de vacinação de Gato - Visualização das vacinas   */
+/* ========================================================== */
 let vacinaModal;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -228,49 +224,152 @@ function abrirPopup(vacina, dose) {
   vacinaModal.show();
 }
 
-	/* ========================================================== */
-	/*   Pagina de Perfil - Animal                                */
-	/* ========================================================== */
+/* ========================================================== */
+/*   Pagina de Perfil - Animal                                */
+/* ========================================================== */
+let editMode = false;
 
-  // let currentCard = null;
+function toggleEditMode() {
+    editMode = !editMode;
+    const editBtn = document.getElementById('editBtn');
+    const infoItems = document.querySelectorAll('.info-item');
+    
+    if (editMode) {
+        editBtn.textContent = '💾';
+        editBtn.title = 'Salvar alterações';
+        enableEditMode();
+    } else {
+        editBtn.textContent = '✏️';
+        editBtn.title = 'Editar perfil';
+        saveChanges();
+        disableEditMode();
+    }
+}
 
-  // function editPet(name, description) {
-  //   document.getElementById('petName').value = name;
-  //   document.getElementById('petDesc').value = description;
+function enableEditMode() {
+    const editableFields = ['name', 'age', 'breed', 'weight', 'color', 'gender', 'lastVisit', 'nextVaccine', 'vet', 'ownerName', 'ownerPhone', 'ownerEmail', 'address'];
+    
+    editableFields.forEach(fieldId => {
+        const element = document.getElementById(fieldId);
+        if (element) {
+            const currentValue = element.textContent;
+            element.innerHTML = `<input type="text" class="input-field" value="${currentValue}" onblur="updateField('${fieldId}', this.value)">`;
+        }
+    });
 
-  //   const cards = document.querySelectorAll('.pet-card');
-  //   cards.forEach(card => {
-  //     const h5 = card.querySelector('h5');
-  //     if (h5 && h5.textContent.includes(name)) {
-  //       currentCard = card;
-  //     }
-  //   });
+    document.querySelectorAll('.info-item').forEach(item => {
+        item.classList.add('edit-mode');
+    });
+}
 
-  //   const modal = new bootstrap.Modal(document.getElementById('editModal'));
-  //   modal.show();
-  // }
+function disableEditMode() {
+    document.querySelectorAll('.info-item').forEach(item => {
+        item.classList.remove('edit-mode');
+    });
+}
 
-  // function deletePet(button) {
-  //   if (confirm('Tem certeza que deseja excluir este pet?')) {
-  //     button.closest('.pet-card').remove();
-  //   }
-  // }
+function updateField(fieldId, value) {
+    const element = document.getElementById(fieldId);
+    if (element) {
+        element.textContent = value;
+    }
+    
+    // Atualizar campos relacionados
+    if (fieldId === 'name') {
+        document.getElementById('petName').textContent = value;
+    }
+}
 
-  // document.getElementById('editForm').addEventListener('submit', function (e)?) {
-  //   e.preventDefault();
-  //   if (currentCard) {
-  //     const newName = document.getElementById('petName').value;
-  //     const newDesc = document.getElementById('petDesc').value;
+function saveChanges() {
+    // Aqui você salvaria os dados no backend/banco de dados
+    showNotification('Perfil atualizado com sucesso!', 'success');
+}
 
-  //     currentCard.querySelector('h5').innerHTML = `<strong>${newName}</strong>`;
-  //     currentCard.querySelector('p').textContent = newDesc;
+function changePhoto() {
+    const photos = ['🐕', '🐱', '🐰', '🐹', '🐦', '🐠'];
+    const avatar = document.querySelector('.profile-avatar');
+    const currentPhoto = avatar.textContent;
+    const currentIndex = photos.indexOf(currentPhoto);
+    const nextIndex = (currentIndex + 1) % photos.length;
+    
+    avatar.textContent = photos[nextIndex];
+    avatar.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+        avatar.style.transform = 'scale(1)';
+    }, 200);
+}
 
-  //     bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
-  //   }
+function openVaccinationCard() {
+    showNotification('Abrindo carteirinha de vacinação digital...', 'info');
+    // Aqui você abriria a página da carteirinha
+}
 
-    /* ========================================================== */
-	/*   Termos de Uso.                             */
-	/* ========================================================== */
+function scheduleAppointment() {
+    showNotification('Redirecionando para agendamento...', 'info');
+}
+
+function addMedication() {
+    showNotification('Abrindo formulário de medicação...', 'info');
+}
+
+function viewHistory() {
+    showNotification('Carregando histórico médico...', 'info');
+}
+
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        background: ${type === 'success' ? '#d4edda' : type === 'info' ? '#d1ecf1' : '#f8d7da'};
+        color: ${type === 'success' ? '#155724' : type === 'info' ? '#0c5460' : '#721c24'};
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        z-index: 1000;
+        animation: slideIn 0.3s ease;
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Adicionar animações CSS
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
+
+// Efeitos de hover dinâmicos
+document.addEventListener('DOMContentLoaded', function() {
+    const infoItems = document.querySelectorAll('.info-item');
+    infoItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 4px 12px rgba(144, 238, 144, 0.2)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.boxShadow = 'none';
+        });
+    });
+});
+
+/* ========================================================== */
+/*   Termos de Uso.                                           */
+/* ========================================================== */
   document.getElementById("botaoNext").addEventListener("click", function () {
   const checkbox = document.getElementById("aceite");
   const erroMsg = document.getElementById("erro-termos");
@@ -315,4 +414,3 @@ function mostrarPopup() {
 function fecharPopup() {
   document.getElementById('popup-codigo').style.display = 'none';
 }
-
