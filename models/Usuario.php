@@ -29,9 +29,7 @@ class Usuario {
     public function autenticar($email, $senha) {
         $sql = "SELECT * FROM usuarios WHERE email = :email";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-
+        $stmt->execute([':email' => $email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($usuario && password_verify($senha, $usuario['senha'])) {

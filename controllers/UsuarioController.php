@@ -25,20 +25,26 @@ class UsuarioController {
     }
 
     public function login() {
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        $email = isset($_POST['email']) ? $_POST['email'] : null;
+        $senha = isset($_POST['senha']) ? $_POST['senha'] : null;
 
-        $model = new Usuario();
-        $usuario = $model->autenticar($email, $senha);
-
-        if ($usuario) {
-            session_start();
-            $_SESSION['usuario'] = $usuario;
-            header('Location: ../vetz/views/perfil_usuario.php');
-            exit;
-        } else {
-            echo "Credenciais inválidas.";
+        if (!$email || !$senha) {
+           echo "Por favor, preencha email e senha.";
+            return;
         }
+
+    $model = new Usuario();
+    $usuario = $model->autenticar($email, $senha);
+
+    if ($usuario) {
+        session_start();
+        $_SESSION['usuario'] = $usuario;
+        header('Location: /projeto/vetz/perfil-usuario?id=' . $usuario['id']);
+        exit;
+    } else {
+        $erro = "Credenciais inválidas.";
+        include '../views/login.php';
+    }
     }
 
     public function enviarCodigo() {
