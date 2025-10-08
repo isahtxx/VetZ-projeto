@@ -19,7 +19,7 @@
         <link href="css/all.min.css" rel="stylesheet">
 
         <!-- Favicon -->
-        <link href="images/logoPNG.png" rel="shortcut icon">
+        <link href="images/logo_vetz.svg" rel="shortcut icon">
     </head>
 <body>
         <!--Begin Header-->
@@ -28,8 +28,8 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-lg">
         
-                        <a href="index.html" rel="home">
-                            <img class="logomenu" src="images/Logo VETZ.svg" alt="VET Z" title="VetZ">
+                        <a href="homepage.html" rel="home">
+                            <img class="logomenu" src="images/logo_vetz.svg" alt="VET Z" title="VetZ">
                         </a>
                         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon">
@@ -65,10 +65,10 @@
                         <?php if (!empty($usuario['imagem'])): ?>
                             <img src="/projeto/uploads/<?= htmlspecialchars($usuario['imagem']) ?>" class="card-img-top-perfil" alt="Imagem do usuário">
                         <?php else: ?>
-                            <img src="images/marcela.jpg" class="card-img-top-perfil" alt="Marcela">
+                            <img src="images/marcela_foto.jpg" class="card-img-top-perfil" alt="Marcela">
                         <?php endif; ?>
                     <div class="col-md-6">
-                        <img src="images/marcela.jpg" class="card-img-top-perfil" alt="Marcela">
+                        <img src="images/marcela_foto" class="card-img-top-perfil" alt="Marcela">
                         <a href="#" class="sec04alterar">Alterar Foto de Perfil</a>
                     </div>
 
@@ -128,7 +128,7 @@
                 <!-- Pet Card 2 -->
                 <div class="pet-card d-flex align-items-start justify-content-between">
                     <div class="d-flex">
-                        <img src="images/imgShakira.png" alt="Pet Icon" class="pet-icon">
+                        <img src="images/shakira_pet_foto.png" alt="Pet Icon" class="pet-icon">
                         <div>
                             <p class="sec04-1ph1">SHAKIRA</p>
                             <p class="descricaoAnimal"><Strong>Raça:</Strong> Lhasa Apso</p>
