@@ -45,7 +45,7 @@ class VacinacaoController {
         $vacinas = $vacinacaoModel->listarVacinas();
 
         $pets = (new Pet())->getPetsByUsuario($this->usuarioId);
-        include '../views/vacinacao_form.php';
+        include '../views/vacinacao_geral.php';
     }
 
     // Cadastrar vacinação
@@ -58,7 +58,7 @@ class VacinacaoController {
             $id_pet = $_POST['id_pet'];
 
             if ($vacinacao->cadastrar($data, $doses, $id_vacina, $id_pet)) {
-                header('Location: ../views/vacinacao_list.php');
+                header('Location: ../views/vacinacao_geral.php');
                 exit;
             } else {
                 echo "Erro ao cadastrar a vacina.";
@@ -70,7 +70,7 @@ class VacinacaoController {
     public function editar($id, $data, $doses, $id_vacina, $id_pet) {
         $model = new Vacinacao();
         $model->editar($id, $data, $doses, $id_vacina, $id_pet);
-        header("Location: ../views/vacinacao_list.php");
+        header("Location: ../views/vacinacao_pet.php");
         exit;
     }
 
@@ -78,7 +78,7 @@ class VacinacaoController {
     public function excluir($id) {
         $model = new Vacinacao();
         $model->excluir($id);
-        header("Location: ../views/vacinacao_list.php");
+        header("Location: ../views/vacinacao_pet.php");
         exit;
     }
 

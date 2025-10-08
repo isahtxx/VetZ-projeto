@@ -53,7 +53,7 @@
 
 
 <br>
-<a href="/projeto/vetz/pet_form.php">Cadastrar novo pet</a>
+<a href="/projeto/vetz/formulario">Cadastrar novo pet</a>
 <a href="/projeto/vetz/cadastrar-vacina">Adicionar Vacina</a>
 
 </body>
