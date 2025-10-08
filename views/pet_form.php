@@ -11,7 +11,7 @@
       <!-- Cabeçalho -->
   <header class="topo">
     <div class="logo-box">
-      <img src="views/images/Logo_vetz.svg" alt="Logo da Clínica" />
+      <img src="views/images/Logo VETZ.svg" alt="Logo da Clínica" />
       <span class="titulo">VetZ</span>
     </div>
     <button class="voltar" onclick="history.back()">VOLTAR</button>
