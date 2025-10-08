@@ -184,4 +184,6 @@ switch ($request) {
         http_response_code(404);
         echo "Página não encontrada: $request";
         break;
+
+        //teste
 }
