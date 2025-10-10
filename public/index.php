@@ -146,6 +146,14 @@ switch ($request) {
         (new VacinacaoController())->listVacina();
         break;
 
+    case '/projeto/vetz/curiosidades':
+        include '../views/curiosidades.html';
+        break;
+
+    case '/projeto/vetz/recomendacoes':
+        include '../views/exibicao_pets.html';  
+        break;
+
     // case '/projeto/vetz/list-ficha':
     //     $controller = new FichaController();
     //     $controller->listFicha();
@@ -177,7 +185,11 @@ switch ($request) {
         break;
     
     case '/projeto/vetz/homepage':
-        include '../views/homepage.php';
+        include '../views/homepage.html';
+        break;
+
+    case '/projeto/vetz/sobre-nos':
+        include '../views/sobre_nos.html';
         break;
 
     case '/projeto/vetz/pets-exibir':
