@@ -175,6 +175,10 @@ switch ($request) {
     case '/projeto/vetz/perfil':
 
         break;
+    
+    case '/projeto/vetz/homepage':
+        include '../views/homepage.php';
+        break;
 
     case '/projeto/vetz/pets-exibir':
         include '../views/exibicao_pets.html';
