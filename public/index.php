@@ -159,7 +159,7 @@ switch ($request) {
         }
         $controller = new UsuarioController();
         $usuario = $controller->perfil($_GET['id']);
-        require_once '../views/usuario/perfil_usuario.php';
+        include '../views/perfil_usuario.php';
         break;
 
     case '/projeto/vetz/excluir-usuario':
@@ -188,4 +188,6 @@ switch ($request) {
         http_response_code(404);
         echo "Página não encontrada: $request";
         break;
+
+        //teste
 }
