@@ -24,144 +24,193 @@
        
     <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
 <body>
-    <div class="container">
-        <div class="main-profile">
-            <div class="profile-PET">
-                <div class="profile-avatar" onclick="changePhoto()">
-                    🐕
-                </div>
-                <div class="pet-name" id="petName">Mané (Luck)</div>
-                <div class="pet-breed" id="petBreed">Vira-Lata • 5 anos</div>
-            </div>
-
-            <div class="profile-content">
-                <div class="info-section">
-                    <h3 class="section-title">Informações Básicas</h3>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label">Nome</div>
-                            <div class="info-value" id="name">Mané (Luck)</div>
+    <section class="sectionPet" id="secPet">
+        <div class="container">
+            <button class="back-button" onclick="goBack()" title="Voltar">
+                ←
+            </button>
+                <div class="main-profile">
+                    <div class="profile-header" id="profileHeader">
+                        <button class="banner-upload" onclick="document.getElementById('bannerInput').click()">
+                            📷 Alterar Banner
+                        </button>
+                        <input type="file" id="bannerInput" class="file-input" accept="image/*" onchange="changeBanner(event)">
+                        
+                        <div class="profile-avatar" onclick="document.getElementById('avatarInput').click()">
+                            <div class="avatar-placeholder" id="avatarPlaceholder">🐕</div>
+                            <div class="avatar-upload-overlay">Clique para alterar</div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-label">Idade</div>
-                            <div class="info-value" id="age">5 anos</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Raça</div>
-                            <div class="info-value" id="breed">Vira-lata</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Peso</div>
-                            <div class="info-value" id="weight">15 kg</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Cor</div>
-                            <div class="info-value" id="color">Preto</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Sexo</div>
-                            <div class="info-value" id="gender">Macho</div>
-                        </div>
+                        <input type="file" id="avatarInput" class="file-input" accept="image/*" onchange="changeAvatar(event)">
+                        
+                        <div class="pet-name" id="petName">Max</div>
+                        <div class="pet-breed" id="petBreed">Golden Retriever • 3 anos</div>
                     </div>
-                </div>
 
-                <div class="info-section">
-                    <h3 class="section-title">Saúde</h3>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label">Status Geral</div>
-                            <div class="info-value">
-                                <span class="health-status status-healthy">Saudável</span>
+                    <div class="profile-content">
+                        <div class="info-section">
+                            <h3 class="section-title">Informações Básicas</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="info-label">Nome</div>
+                                    <div class="info-value" id="name">Max</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Idade</div>
+                                    <div class="info-value" id="age">3 anos</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Raça</div>
+                                    <div class="info-value" id="breed">Golden Retriever</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Peso</div>
+                                    <div class="info-value" id="weight">28 kg</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Cor</div>
+                                    <div class="info-value" id="color">Dourado</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Sexo</div>
+                                    <div class="info-value" id="gender">Macho</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-label">Última Consulta</div>
-                            <div class="info-value" id="lastVisit">15/08/2024</div>
+
+                        <div class="info-section">
+                            <h3 class="section-title">Saúde</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="info-label">Status Geral</div>
+                                    <div class="info-value">
+                                        <span class="health-status status-healthy">Saudável</span>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Última Consulta</div>
+                                    <div class="info-value" id="lastVisit">15/08/2024</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Próxima Vacina</div>
+                                    <div class="info-value" id="nextVaccine">20/10/2024</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Veterinário</div>
+                                    <div class="info-value" id="vet">Dr. Ana Silva</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-label">Próxima Vacina</div>
-                            <div class="info-value" id="nextVaccine">20/10/2024</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Veterinário</div>
-                            <div class="info-value" id="vet">Dr. Camilla Garcez</div>
+
+                        <div class="info-section">
+                            <h3 class="section-title">Contato do Tutor</h3>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="info-label">Nome</div>
+                                    <div class="info-value" id="ownerName">João Santos</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Telefone</div>
+                                    <div class="info-value" id="ownerPhone">(11) 99999-9999</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Email</div>
+                                    <div class="info-value" id="ownerEmail">joao@email.com</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Endereço</div>
+                                    <div class="info-value" id="address">São Paulo, SP</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="info-section">
-                    <h3 class="section-title">Contato do Tutor</h3>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label">Nome</div>
-                            <div class="info-value" id="ownerName">Marcela Sanches</div>
+                <div class="sidebar">
+                    <div class="sidebar-card">
+                        <h3 style="color: #2d5016; margin-bottom: 20px;">Ações Rápidas</h3>
+                        <div class="quick-actions">
+                            <button class="btn btn-primary" onclick="openVaccinationCard()">
+                                📋 Carteirinha de Vacinação
+                            </button>
+                            <button class="btn btn-secondary" onclick="scheduleAppointment()">
+                                📅 Agendar Consulta
+                            </button>
+                            <button class="btn btn-secondary" onclick="addMedication()">
+                                💊 Adicionar Medicação
+                            </button>
+                            <button class="btn btn-secondary" onclick="viewHistory()">
+                                📚 Histórico Médico
+                            </button>
                         </div>
-                        <div class="info-item">
-                            <div class="info-label">Telefone</div>
-                            <div class="info-value" id="ownerPhone">(11) 99999-9999</div>
+                    </div>
+
+                    <div class="sidebar-card vaccination-preview">
+                        <div class="vaccination-icon">💉</div>
+                        <h4 style="color: #2d5016; margin-bottom: 10px;">Carteirinha Digital</h4>
+                        <p style="color: #4a7c23; font-size: 14px; margin-bottom: 15px;">
+                            Todas as vacinas em dia! Próxima dose em 30 dias.
+                        </p>
+                        <button class="btn btn-primary" onclick="openVaccinationCard()">
+                            Ver Carteirinha
+                        </button>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="color: #2d5016; margin: 0;">Lembretes</h4>
+                            <button class="add-reminder-btn" onclick="addReminder()" title="Adicionar lembrete">
+                                +
+                            </button>
                         </div>
-                        <div class="info-item">
-                            <div class="info-label">Email</div>
-                            <div class="info-value" id="ownerEmail">marcela@gmail.com</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Endereço</div>
-                            <div class="info-value" id="address">São Paulo, SP</div>
+                        <div style="text-align: left;" id="remindersList">
+                            <div class="reminder-item" style="padding: 10px; background: #f8fdf8; border-radius: 6px; margin-bottom: 10px; border-left: 3px solid #90EE90;">
+                                <strong>Vermifugação</strong><br>
+                                <small style="color: #666;">Em 5 dias</small>
+                            </div>
+                            <div class="reminder-item" style="padding: 10px; background: #f8fdf8; border-radius: 6px; border-left: 3px solid #ffc107;">
+                                <strong>Check-up Anual</strong><br>
+                                <small style="color: #666;">Em 15 dias</small>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="sidebar">
-            <div class="sidebar-card">
-                <h3 style="color: #2d5016; margin-bottom: 20px;">Ações Rápidas</h3>
-                <div class="quick-actions">
-                    <button class="btn btn-primary" onclick="openVaccinationCard()">
-                        📋 Carteirinha de Vacinação
-                    </button>
-                    <button class="btn btn-secondary" onclick="scheduleAppointment()">
-                        📅 Agendar Consulta
-                    </button>
-                    <button class="btn btn-secondary" onclick="addMedication()">
-                        💊 Adicionar Medicação
-                    </button>
-                    <button class="btn btn-secondary" onclick="viewHistory()">
-                        📚 Histórico Médico
-                    </button>
-                </div>
-            </div>
+            <button class="floating-edit" onclick="toggleEditMode()" id="editBtn">
+                ✏️
+            </button>
 
-            <div class="sidebar-card vaccination-preview">
-                <div class="vaccination-icon">💉</div>
-                <h4 style="color: #2d5016; margin-bottom: 10px;">Carteirinha Digital</h4>
-                <p style="color: #4a7c23; font-size: 14px; margin-bottom: 15px;">
-                    Todas as vacinas em dia! Próxima dose em 30 dias.
-                </p>
-                <button class="btn btn-primary" onclick="openVaccinationCard()">
-                    Ver Carteirinha
-                </button>
-            </div>
-
-            <div class="sidebar-card">
-                <h4 style="color: #2d5016; margin-bottom: 15px;">Lembretes</h4>
-                <div style="text-align: left;">
-                    <div style="padding: 10px; background: #f8fdf8; border-radius: 6px; margin-bottom: 10px; border-left: 3px solid #90EE90;">
-                        <strong>Vermifugação</strong><br>
-                        <small style="color: #666;">Em 5 dias</small>
+            <!-- Modal para adicionar lembrete -->
+            <div id="reminderModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Novo Lembrete</h3>
+                        <button class="close-modal" onclick="closeReminderModal()">&times;</button>
                     </div>
-                    <div style="padding: 10px; background: #f8fdf8; border-radius: 6px; border-left: 3px solid #ffc107;">
-                        <strong>Check-up Anual</strong><br>
-                        <small style="color: #666;">Em 15 dias</small>
-                    </div>
+                    <form onsubmit="saveReminder(event)">
+                        <div class="form-group">
+                            <label class="form-label">Título do Lembrete</label>
+                            <input type="text" id="reminderTitle" class="form-control" placeholder="Ex: Banho, Consulta veterinária..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Data</label>
+                            <input type="date" id="reminderDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Prioridade</label>
+                            <select id="reminderPriority" class="form-control">
+                                <option value="normal">Normal</option>
+                                <option value="high">Alta</option>
+                                <option value="low">Baixa</option>
+                            </select>
+                        </div>
+                        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                            <button type="button" class="btn btn-secondary" onclick="closeReminderModal()">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Salvar Lembrete</button>
+                        </div>
+                    </form>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <button class="floating-edit" onclick="toggleEditMode()" id="editBtn">
-        ✏️
-    </button>
+        </section>
 
         <!-- Load JS =============================-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
