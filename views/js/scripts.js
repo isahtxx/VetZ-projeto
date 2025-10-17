@@ -363,3 +363,266 @@ function fecharPopup() {
   document.getElementById('popup-codigo').style.display = 'none';
 }
 
+
+
+  /* ========================================================== */
+	/*   Perfil usuário.                                          */
+	/* ========================================================== */
+function previewAvatar(event) {
+  const input = event.target;
+  const file = input.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function() {
+    const avatarImage = document.getElementById('avatarImage');
+    avatarImage.src = reader.result;
+  };
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+
+// ==================== DADOS DOS PETS ====================
+var pets = [
+    {
+        id: 1,
+        nome: "Shakira",
+        especie: "Gato",
+        idade: 3,
+        emoji: "🐱",
+        foto: null
+    },
+    {
+        id: 2,
+        nome: "Mané (Luck)",
+        especie: "Cachorro",
+        idade: 6,
+        emoji: "🐶",
+        foto: null
+    }
+];
+
+var nextPetId = 3;
+
+// ==================== EMOJIS POR ESPÉCIE ====================
+var emojis = {
+    'Cachorro': '🐶',
+    'Gato': '🐱',
+    'Coelho': '🐰',
+    'Pássaro': '🐦',
+    'Hamster': '🐹',
+    'Peixe': '🐠',
+    'Tartaruga': '🐢',
+    'Outro': '🐾'
+};
+
+// ==================== FUNÇÕES DO MODAL ====================
+function abrirModal() {
+    var modal = document.getElementById('addPetModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function fecharModal() {
+    var modal = document.getElementById('addPetModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    
+    // Limpar formulário
+    document.getElementById('addPetForm').reset();
+    document.getElementById('petPhotoPreview').style.display = 'none';
+    document.getElementById('photoPreview').style.display = 'flex';
+}
+
+// ==================== RENDERIZAR PETS ====================
+function renderizarPets() {
+    var petsGrid = document.getElementById('petsGrid');
+    petsGrid.innerHTML = '';
+    
+    for (var i = 0; i < pets.length; i++) {
+        var pet = pets[i];
+        var petCard = document.createElement('div');
+        petCard.className = 'pet-card';
+        
+        var avatarHTML = '';
+        if (pet.foto) {
+            avatarHTML = '<img src="' + pet.foto + '" alt="' + pet.nome + '" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">';
+        } else {
+            avatarHTML = pet.emoji;
+        }
+        
+        petCard.innerHTML = 
+            '<div class="pet-avatar">' + avatarHTML + '</div>' +
+            '<div class="pet-name">' + pet.nome + '</div>' +
+            '<div class="pet-info">' + pet.especie + ' • ' + pet.idade + (pet.idade === 1 ? ' ano' : ' anos') + '</div>' +
+            '<button class="view-profile-btn" onclick="abrirPerfilPet(' + pet.id + ')">Ver Perfil</button>';
+        
+        petsGrid.appendChild(petCard);
+    }
+}
+
+// ==================== ABRIR PERFIL DO PET ====================
+function abrirPerfilPet(petId) {
+    var pet = null;
+    for (var i = 0; i < pets.length; i++) {
+        if (pets[i].id === petId) {
+            pet = pets[i];
+            break;
+        }
+    }
+    
+    if (pet) {
+        alert('Abrindo perfil de ' + pet.nome + '...\n\nEspécie: ' + pet.especie + '\nIdade: ' + pet.idade + (pet.idade === 1 ? ' ano' : ' anos'));
+    }
+}
+
+// ==================== SALVAR PET ====================
+function salvarPet(event) {
+    event.preventDefault();
+    
+    var nome = document.getElementById('petNameInput').value.trim();
+    var especie = document.getElementById('petSpeciesInput').value;
+    var idade = parseInt(document.getElementById('petAgeInput').value);
+    var fotoInput = document.getElementById('petPhotoInput');
+    
+    if (!nome || !especie || isNaN(idade)) {
+        alert('Por favor, preencha todos os campos obrigatórios!');
+        return;
+    }
+    
+    var novoPet = {
+        id: nextPetId++,
+        nome: nome,
+        especie: especie,
+        idade: idade,
+        emoji: emojis[especie] || '🐾',
+        foto: null
+    };
+    
+    if (fotoInput.files.length > 0) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            novoPet.foto = e.target.result;
+            pets.push(novoPet);
+            renderizarPets();
+            fecharModal();
+            mostrarMensagem(nome + ' foi adicionado com sucesso!');
+        };
+        reader.readAsDataURL(fotoInput.files[0]);
+    } else {
+        pets.push(novoPet);
+        renderizarPets();
+        fecharModal();
+        mostrarMensagem(nome + ' foi adicionado com sucesso!');
+    }
+}
+
+// ==================== MENSAGEM DE SUCESSO ====================
+function mostrarMensagem(texto) {
+    var msg = document.createElement('div');
+    msg.textContent = texto;
+    msg.style.cssText = 
+        'position: fixed; top: 20px; right: 20px; background: #4CAF50; color: white; ' +
+        'padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); ' +
+        'z-index: 10000; font-family: Arial, sans-serif; opacity: 0; transition: opacity 0.3s;';
+    
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity = '1'; }, 10);
+    setTimeout(function() {
+        msg.style.opacity = '0';
+        setTimeout(function() { msg.remove(); }, 300);
+    }, 3000);
+}
+
+// ==================== UPLOAD DE IMAGENS ====================
+function alterarAvatar(event) {
+    var file = event.target.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('avatarImage').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function alterarBanner(event) {
+    var file = event.target.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var header = document.getElementById('profileHeader');
+            header.style.backgroundImage = 'url(' + e.target.result + ')';
+            header.style.backgroundSize = 'cover';
+            header.style.backgroundPosition = 'center';
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function previewFotoPet(event) {
+    var file = event.target.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('petPhotoPreview').src = e.target.result;
+            document.getElementById('petPhotoPreview').style.display = 'block';
+            document.getElementById('photoPreview').style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+// ==================== INICIALIZAÇÃO ====================
+window.addEventListener('DOMContentLoaded', function() {
+    console.log('VetZ Script Carregado!');
+    
+    // Renderizar pets
+    renderizarPets();
+    
+    // Botão adicionar pet
+    document.getElementById('addPetButton').addEventListener('click', abrirModal);
+    
+    // Botões fechar modal
+    document.getElementById('closeModalBtn').addEventListener('click', fecharModal);
+    document.getElementById('cancelBtn').addEventListener('click', fecharModal);
+    
+    // Fechar modal ao clicar fora
+    document.getElementById('addPetModal').addEventListener('click', function(e) {
+        if (e.target.id === 'addPetModal') {
+            fecharModal();
+        }
+    });
+    
+    // Fechar com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            fecharModal();
+        }
+    });
+    
+    // Formulário de adicionar pet
+    document.getElementById('addPetForm').addEventListener('submit', salvarPet);
+    
+    // Upload de avatar
+    document.getElementById('avatarUploadBtn').addEventListener('click', function() {
+        document.getElementById('avatarInput').click();
+    });
+    document.getElementById('avatarInput').addEventListener('change', alterarAvatar);
+    
+    // Upload de banner
+    document.getElementById('bannerUploadBtn').addEventListener('click', function() {
+        document.getElementById('bannerInput').click();
+    });
+    document.getElementById('bannerInput').addEventListener('change', alterarBanner);
+    
+    // Upload de foto do pet
+    document.getElementById('photoUploadArea').addEventListener('click', function() {
+        document.getElementById('petPhotoInput').click();
+    });
+    document.getElementById('petPhotoInput').addEventListener('change', previewFotoPet);
+    
+    // Ano no footer
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+});

@@ -614,11 +614,238 @@ R
 .section04{
   position: relative;
   padding-top: 108px;
-  padding-bottom: 590px;
+  padding-bottom: 780px;
+  font-family: 'Poppins-Regular';
   background: #FEFFEF;
   background-size: cover;
   z-index: 10;
   overflow: hidden;
+}
+
+
+.main-profile {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin: -60px 0 0 0;
+}
+
+.profile-header {
+  background: linear-gradient(135deg, #90EE90, #98FB98);
+  padding: 30px;
+  text-align: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.profile-header > * {
+  position: relative;
+  z-index: 2;
+}
+
+.banner-upload {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4a7c23;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.banner-upload:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #555;
+  margin: 0 auto 20px;
+  border: 4px solid white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+}
+
+.avatar-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 24px;
+  background: #555;
+}
+
+.avatar-upload-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile-avatar:hover .avatar-upload-overlay {
+  opacity: 1;
+}
+
+.file-input {
+  display: none;
+}
+
+.tutor{
+  font-family: 'Poppins-Bold';
+  font-size: 20px;
+  color: #2d5016;
+}
+
+.profile-content {
+  padding: 30px;
+}
+
+.info-section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2d5016;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #90EE90;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.info-item {
+  background: #f8fdf8;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #90EE90;
+  transition: transform 0.2s ease;
+}
+
+.info-item:hover {
+  transform: translateX(5px);
+}
+
+.info-label {
+  font-weight: 600;
+  color: #4a7c23;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 16px;
+  color: #333;
+  margin-top: 5px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #90EE90, #98FB98);
+  color: #2d5016;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #7dd87d, #90EE90);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(144, 238, 144, 0.3);
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #4a7c23;
+  border: 2px solid #90EE90;
+}
+
+.btn-secondary:hover {
+  background: #90EE90;
+  color: white;
 }
 
 .container {
@@ -629,6 +856,7 @@ R
 .back-button {
   background: white;
   border: none;
+  margin: 0 0 0 40px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -656,7 +884,7 @@ R
 .profile-header {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
   margin-bottom: 40px;
 }
 
@@ -736,7 +964,7 @@ R
 
 .section-title {
   font-size: 32px;
-  color: white;
+  color: #2d5016;
   font-weight: bold;
   margin-bottom: 25px;
   display: flex;
@@ -826,6 +1054,183 @@ R
 .add-pet-btn:hover {
   transform: scale(1.1);
 }
+
+/* Begin Section 04.1*/
+.sec04-1{
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 120px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: visible;
+}
+
+/* Modal para adicionar pet */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.close-modal:hover {
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.photo-upload-area {
+  border: 2px dashed #e0e0e0;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: #f9f9f9;
+}
+
+.photo-upload-area:hover {
+  border-color: #4CAF50;
+  background-color: #f0f8f0;
+}
+
+.photo-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.upload-icon {
+  font-size: 48px;
+}
+
+.upload-text {
+  color: #666;
+  font-size: 14px;
+}
+
+.pet-photo-img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn-cancel,
+.btn-save {
+  flex: 1;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-cancel {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.btn-cancel:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-save {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-save:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+/* End Section 04.1*/
 
 /* User PHP */
 .secUser{
