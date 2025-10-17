@@ -61,86 +61,82 @@
         <!-- Begin Section 04 -->
         <section class="section04" id="sec04">
             <div class="container">
-                <p class="sec04phtiltle">PERFIL DO USUÁRIO</p>
-                <div class="row">
-                    <div class="col-md-6">
-                        <img src="images/marcela_foto.jpg" class="card-img-top-perfil" alt="Marcela">
-                        <a href="#" class="sec04alterar">Alterar Foto de Perfil</a>
-                    </div>
+                <div class="container">
+                    <button class="back-button" onclick="window.history.back()">
+                        ←
+                    </button>
 
-                    <div class="col-md-6">
-                        <div class="dadoPerfilsec04">
-
-                            <div class="form-group">
-                                <label for="nome">Nome</label>
-                                <input type="text" id="nome" class="form-control perfil-input" value="Marcela Sanches" readonly>
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-photo">
+                                👤
                             </div>
-
-                            <div class="form-group">
-                                <label for="email">E-mail</label>
-                                <input type="email" id="email" class="form-control perfil-input" value="marcelasanches@gmail.com" readonly>
+                            <div class="profile-info">
+                                <div class="profile-name">João Silva</div>
+                                <div class="profile-type">Tutor</div>
                             </div>
+                            <button class="edit-button">
+                                ✏️ Editar Perfil
+                            </button>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="senha">Senha</label>
-                                <input type="password" id="senha" class="form-control perfil-input" value="Mané123" readonly>
+                        <div class="info-grid">
+                            <div class="info-box">
+                                <div class="info-label">CPF</div>
+                                <div class="info-value">123.456.789-00</div>
                             </div>
-                           <a href="update_usuario.php" ><p class="sec04editar">Editar Perfil</p></a>
+                            <div class="info-box">
+                                <div class="info-label">E-MAIL</div>
+                                <div class="info-value">joao.silva@email.com</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">TELEFONE</div>
+                                <div class="info-value">(11) 98765-4321</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">ENDEREÇO</div>
+                                <div class="info-value">Rua das Flores, 123 - São Paulo, SP</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">DATA DE NASCIMENTO</div>
+                                <div class="info-value">15/03/1985</div>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-label">CADASTRADO EM</div>
+                                <div class="info-value">10/01/2023</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
         <!-- End Section 04 -->
 
-        
         <!-- Begin Section 04.1 -->
         <section class="sec04-1">
-            <div class="container py-4">
-                <h2 class="sec04-1titleh3">🐾 Pets Cadastrados</h2>
-
-                <!-- Pet Card 1 -->
-                <div class="pet-card d-flex align-items-start justify-content-between">
-                    <div class="d-flex">
-                        <img src="images/mane_pet_foto.png" alt="Pet Icon" class="pet-icon">
-                        <div>
-                            <p class="sec04-1ph1">LUCK (Mané)</p>
-                                <p class="descricaoAnimal"><Strong>Raça:</Strong> Vira-Lata</p>
-                                <p class="descricaoAnimal"><Strong>Sexo:</Strong> Macho </p>
-                                <p class="descricaoAnimal"><Strong>Idade:</Strong> 4 anos </p>
-                                <p class="descricaoAnimal"><Strong>Porte:</Strong> Médio (48 cm - do chão até os ombros)</p>
-                                <p class="descricaoAnimal"><Strong>Peso:</Strong> 18 kg </p>
-                        </div>
-                    </div>
-                    <div class="ms-3 text-end">
-                        <a href="./update_pet.php" class="botaosec04 editar">Editar</a>
-                        <a href="./update_pet.php" class="botaosec04 trocar-foto">Trocar Foto</a>
-                        <a class="botaosec04 excluir" onclick="deletePet(this)">Excluir</a>
-                    </div>
+            <div class="container">
+                <div class="section-title">
+                    Meus Pets
+                    <button class="add-pet-btn" title="Adicionar novo pet">+</button>
                 </div>
 
-                <!-- Pet Card 2 -->
-                <div class="pet-card d-flex align-items-start justify-content-between">
-                    <div class="d-flex">
-                        <img src="images/shakira_pet_foto.png" alt="Pet Icon" class="pet-icon">
-                        <div>
-                            <p class="sec04-1ph1">SHAKIRA</p>
-                            <p class="descricaoAnimal"><Strong>Raça:</Strong> Lhasa Apso</p>
-                            <p class="descricaoAnimal"><Strong>Sexo:</Strong> Femêa </p>
-                            <p class="descricaoAnimal"><Strong>Idade:</Strong> 15 anos </p>
-                            <p class="descricaoAnimal"><Strong>Porte:</Strong> Pequeno (25 cm - do chão até os ombros)</p>
-                            <p class="descricaoAnimal"><Strong>Peso:</Strong> 6 kg </p>
-                        </div>
-                        <div class="ms-3 text-end">
-                            <a href="./update_pet.php" class="botaosec04 editar">Editar</a>
-                            <a href="./update_pet.php" class="botaosec04 trocar-foto">Trocar Foto</a>
-                            <a class="botaosec04 excluir" onclick="deletePet(this)">Excluir</a>
-                        </div>
+                <div class="pets-grid">
+                    <div class="pet-card" onclick="alert('Abrindo perfil da Shakira...')">
+                        <div class="pet-avatar">🐱</div>
+                        <div class="pet-name">Shakira</div>
+                        <div class="pet-info">Gata • 3 anos</div>
+                        <button class="view-profile-btn">Ver Perfil</button>
+                    </div>
+
+                    <div class="pet-card" onclick="alert('Abrindo perfil do Mané...')">
+                        <div class="pet-avatar">🐶</div>
+                        <div class="pet-name">Mané (Luck)</div>
+                        <div class="pet-info">Vira-Lata • 6 anos</div>
+                        <button class="view-profile-btn">Ver Perfil</button>
                     </div>
                 </div>
+            </div>
         </section>
-
         <!-- End Section 04.1 -->
 
         <!-- Begin footer-->
