@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carteirinha de Vacinação Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 20px;
+        }
+
+        .header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .pet-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .header-info {
+            flex: 1;
+            color: white;
+        }
+
+        .header-info h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header-info p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .pet-details {
+            display: flex;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .pet-detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pet-detail-label {
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-bottom: 3px;
+        }
+
+        .pet-detail-value {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .vaccination-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .vaccination-card h2 {
+            color: #2e7d32;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #81c784;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .edit-btn, .add-btn {
+            background: linear-gradient(135deg, #66bb6a 0%, #81c784 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+
+        .edit-btn:hover, .add-btn:hover {
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .add-btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 15px;
+            font-size: 1em;
+        }
+
+        .vaccine-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .vaccine-table thead {
+            background: linear-gradient(135deg, #66bb6a 0%, #81c784 100%);
+            color: white;
+        }
+
+        .vaccine-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .vaccine-table tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+            transition: background 0.3s;
+        }
+
+        .vaccine-table tbody tr:hover {
+            background: #f1f8e9;
+        }
+
+        .vaccine-table td {
+            padding: 15px;
+        }
+
+        .vaccine-name {
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        .vaccine-subtitle {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .status-done {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .status-pending {
+            background: #fff9c4;
+            color: #f57f17;
+        }
+
+        .status-due {
+            background: #ffccbc;
+            color: #d84315;
+        }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            background: #4caf50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .medications-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .medications-panel h2 {
+            color: #2e7d32;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #81c784;
+            padding-bottom: 10px;
+        }
+
+        .medication-card {
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #66bb6a;
+        }
+
+        .medication-name {
+            font-weight: 600;
+            color: #2e7d32;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .medication-info {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .medication-date {
+            font-size: 0.85em;
+            color: #777;
+            font-style: italic;
+        }
+
+        .age-alert {
+            background: #fff9c4;
+            border-left: 4px solid #fbc02d;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .age-alert strong {
+            color: #f57f17;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #81c784;
+            padding-bottom: 15px;
+        }
+
+        .modal-header h3 {
+            color: #2e7d32;
+            font-size: 1.8em;
+        }
+
+        .close-btn {
+            background: #e53935;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #c62828;
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2e7d32;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #c8e6c9;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #66bb6a;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #f1f8e9;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .checkbox-group:hover {
+            background: #e8f5e9;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            flex: 1;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .checkbox-group .vaccine-date-input {
+            width: 150px;
+            padding: 8px;
+            border: 2px solid #c8e6c9;
+            border-radius: 6px;
+        }
+
+        .save-btn {
+            background: linear-gradient(135deg, #66bb6a 0%, #81c784 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1em;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .save-btn:hover {
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .medication-card {
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #66bb6a;
+            position: relative;
+        }
+
+        .delete-medication-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e53935;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .delete-medication-btn:hover {
+            background: #c62828;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="pet-photo">🐕</div>
+            <div class="header-info">
+                <h1>Rex</h1>
+                <p>Tutor: João Silva</p>
+                <div class="pet-details">
+                    <div class="pet-detail-item">
+                        <span class="pet-detail-label">Espécie</span>
+                        <span class="pet-detail-value">Cachorro</span>
+                    </div>
+                    <div class="pet-detail-item">
+                        <span class="pet-detail-label">Raça</span>
+                        <span class="pet-detail-value">Labrador</span>
+                    </div>
+                    <div class="pet-detail-item">
+                        <span class="pet-detail-label">Idade</span>
+                        <span class="pet-detail-value">8 semanas</span>
+                    </div>
+                    <div class="pet-detail-item">
+                        <span class="pet-detail-label">Data de Nascimento</span>
+                        <span class="pet-detail-value">20/08/2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vaccination-card">
+            <h2>
+                📋 Carteirinha de Vacinação Digital
+                <button class="edit-btn" onclick="openEditModal()">
+                    ✏️ Editar Vacinas
+                </button>
+            </h2>
+            
+            <div class="age-alert">
+                <strong>⏰ Atenção:</strong> Seu pet está com 8 semanas de idade. Confira as vacinas recomendadas para esta fase!
+            </div>
+
+            <table class="vaccine-table">
+                <thead>
+                    <tr>
+                        <th>Vacinação</th>
+                        <th>Status</th>
+                        <th>Data Aplicação</th>
+                        <th>Próxima Dose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="vaccine-name">Polivalente V8/V10</div>
+                            <div class="vaccine-subtitle">1ª Dose - A partir de 6 semanas</div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-done">
+                                <span class="check-icon">✓</span>
+                                Aplicada
+                            </span>
+                        </td>
+                        <td>05/10/2025</td>
+                        <td>26/10/2025</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vaccine-name">Polivalente V8/V10</div>
+                            <div class="vaccine-subtitle">2ª Dose - 9 semanas</div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-pending">
+                                ⏳ Próxima
+                            </span>
+                        </td>
+                        <td>-</td>
+                        <td>26/10/2025</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vaccine-name">Polivalente V8/V10</div>
+                            <div class="vaccine-subtitle">3ª Dose - 12 semanas</div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-due">
+                                📅 Agendada
+                            </span>
+                        </td>
+                        <td>-</td>
+                        <td>16/11/2025</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vaccine-name">Gripe (Tosse dos Canis)</div>
+                            <div class="vaccine-subtitle">1ª Dose - A partir de 6 semanas</div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-done">
+                                <span class="check-icon">✓</span>
+                                Aplicada
+                            </span>
+                        </td>
+                        <td>05/10/2025</td>
+                        <td>26/10/2025</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vaccine-name">Gripe (Tosse dos Canis)</div>
+                            <div class="vaccine-subtitle">2ª Dose - 9 semanas</div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-pending">
+                                ⏳ Próxima
+                            </span>
+                        </td>
+                        <td>-</td>
+                        <td>26/10/2025</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="vaccine-name">Giárdia</div>
+                            <div class="vaccine-subtitle">1ª Dose - A partir de 12 semanas</div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-due">
+                                📅 Agendada
+                            </span>
+                        </td>
+                        <td>-</td>
+                        <td>16/11/2025</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="medications-panel">
+            <h2>💊 Medicações Programadas</h2>
+            
+            <div id="medicationsList">
+                <div class="medication-card">
+                    <button class="delete-medication-btn" onclick="deleteMedication(this)">×</button>
+                    <div class="medication-name">Vermífugo</div>
+                    <div class="medication-info">📊 Dosagem: 1 comprimido</div>
+                    <div class="medication-info">⏰ Frequência: A cada 3 meses</div>
+                    <div class="medication-date">Próxima aplicação: 05/11/2025</div>
+                </div>
+
+                <div class="medication-card">
+                    <button class="delete-medication-btn" onclick="deleteMedication(this)">×</button>
+                    <div class="medication-name">Antipulgas</div>
+                    <div class="medication-info">📊 Dosagem: 1 pipeta</div>
+                    <div class="medication-info">⏰ Frequência: Mensal</div>
+                    <div class="medication-date">Próxima aplicação: 17/11/2025</div>
+                </div>
+
+                <div class="medication-card">
+                    <button class="delete-medication-btn" onclick="deleteMedication(this)">×</button>
+                    <div class="medication-name">Suplemento Vitamínico</div>
+                    <div class="medication-info">📊 Dosagem: 5ml</div>
+                    <div class="medication-info">⏰ Frequência: Diária</div>
+                    <div class="medication-date">Período: Durante o crescimento</div>
+                </div>
+
+                <div class="medication-card">
+                    <button class="delete-medication-btn" onclick="deleteMedication(this)">×</button>
+                    <div class="medication-name">Antiparasitário</div>
+                    <div class="medication-info">📊 Dosagem: 1 comprimido</div>
+                    <div class="medication-info">⏰ Frequência: A cada 4 meses</div>
+                    <div class="medication-date">Próxima aplicação: 17/01/2026</div>
+                </div>
+            </div>
+
+            <button class="add-btn" onclick="openAddMedicationModal()">
+                ➕ Adicionar Medicação
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de Edição de Vacinas -->
+    <div id="editVaccineModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>✏️ Editar Vacinações</h3>
+                <button class="close-btn" onclick="closeEditModal()">×</button>
+            </div>
+            <form id="vaccineForm" onsubmit="saveVaccines(event)">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="vac1" name="vaccine" value="polivalente1">
+                    <label for="vac1">
+                        <strong>Polivalente V8/V10 - 1ª Dose</strong><br>
+                        <small>A partir de 6 semanas</small>
+                    </label>
+                    <input type="date" class="vaccine-date-input" id="date1">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="vac2" name="vaccine" value="polivalente2">
+                    <label for="vac2">
+                        <strong>Polivalente V8/V10 - 2ª Dose</strong><br>
+                        <small>9 semanas</small>
+                    </label>
+                    <input type="date" class="vaccine-date-input" id="date2">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="vac3" name="vaccine" value="polivalente3">
+                    <label for="vac3">
+                        <strong>Polivalente V8/V10 - 3ª Dose</strong><br>
+                        <small>12 semanas</small>
+                    </label>
+                    <input type="date" class="vaccine-date-input" id="date3">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="vac4" name="vaccine" value="gripe1">
+                    <label for="vac4">
+                        <strong>Gripe (Tosse dos Canis) - 1ª Dose</strong><br>
+                        <small>A partir de 6 semanas</small>
+                    </label>
+                    <input type="date" class="vaccine-date-input" id="date4">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="vac5" name="vaccine" value="gripe2">
+                    <label for="vac5">
+                        <strong>Gripe (Tosse dos Canis) - 2ª Dose</strong><br>
+                        <small>9 semanas</small>
+                    </label>
+                    <input type="date" class="vaccine-date-input" id="date5">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="vac6" name="vaccine" value="giardia">
+                    <label for="vac6">
+                        <strong>Giárdia - 1ª Dose</strong><br>
+                        <small>A partir de 12 semanas</small>
+                    </label>
+                    <input type="date" class="vaccine-date-input" id="date6">
+                </div>
+
+                <button type="submit" class="save-btn">💾 Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Adicionar Medicação -->
+    <div id="addMedicationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>➕ Adicionar Medicação</h3>
+                <button class="close-btn" onclick="closeAddMedicationModal()">×</button>
+            </div>
+            <form id="medicationForm" onsubmit="addMedication(event)">
+                <div class="form-group">
+                    <label for="medName">Nome da Medicação *</label>
+                    <input type="text" id="medName" required placeholder="Ex: Vermífugo, Antipulgas...">
+                </div>
+
+                <div class="form-group">
+                    <label for="medDosage">Dosagem *</label>
+                    <input type="text" id="medDosage" required placeholder="Ex: 1 comprimido, 5ml...">
+                </div>
+
+                <div class="form-group">
+                    <label for="medFrequency">Frequência *</label>
+                    <select id="medFrequency" required>
+                        <option value="">Selecione a frequência</option>
+                        <option value="Diária">Diária</option>
+                        <option value="Semanal">Semanal</option>
+                        <option value="Quinzenal">Quinzenal</option>
+                        <option value="Mensal">Mensal</option>
+                        <option value="A cada 2 meses">A cada 2 meses</option>
+                        <option value="A cada 3 meses">A cada 3 meses</option>
+                        <option value="A cada 4 meses">A cada 4 meses</option>
+                        <option value="A cada 6 meses">A cada 6 meses</option>
+                        <option value="Anual">Anual</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="medNextDate">Próxima Aplicação *</label>
+                    <input type="date" id="medNextDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="medNotes">Observações (opcional)</label>
+                    <textarea id="medNotes" rows="3" placeholder="Informações adicionais sobre a medicação..."></textarea>
+                </div>
+
+                <button type="submit" class="save-btn">💾 Adicionar Medicação</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Dados simulados do banco de dados
+        const petData = {
+            name: "Rex",
+            species: "Cachorro",
+            breed: "Labrador",
+            birthDate: "2025-08-20",
+            owner: "João Silva",
+            photo: "🐕"
+        };
+
+        // Função para calcular a idade em semanas
+        function calculateAgeInWeeks(birthDate) {
+            const birth = new Date(birthDate);
+            const today = new Date();
+            const diffTime = Math.abs(today - birth);
+            const diffWeeks = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 7));
+            return diffWeeks;
+        }
+
+        // Função para gerar calendário de vacinação baseado na idade
+        function generateVaccinationSchedule(ageInWeeks, birthDate) {
+            const birth = new Date(birthDate);
+            const vaccines = [];
+
+            // Polivalente doses
+            if (ageInWeeks >= 6) {
+                vaccines.push({
+                    name: "Polivalente V8/V10",
+                    subtitle: "1ª Dose - A partir de 6 semanas",
+                    status: "done",
+                    appliedDate: addWeeks(birth, 6),
+                    nextDate: addWeeks(birth, 9)
+                });
+            }
+            
+            if (ageInWeeks >= 9) {
+                vaccines.push({
+                    name: "Polivalente V8/V10",
+                    subtitle: "2ª Dose - 9 semanas",
+                    status: ageInWeeks === 9 ? "pending" : "done",
+                    appliedDate: ageInWeeks > 9 ? addWeeks(birth, 9) : null,
+                    nextDate: addWeeks(birth, 12)
+                });
+            } else {
+                vaccines.push({
+                    name: "Polivalente V8/V10",
+                    subtitle: "2ª Dose - 9 semanas",
+                    status: "pending",
+                    appliedDate: null,
+                    nextDate: addWeeks(birth, 9)
+                });
+            }
+
+            return vaccines;
+        }
+
+        function addWeeks(date, weeks) {
+            const result = new Date(date);
+            result.setDate(result.getDate() + (weeks * 7));
+            return result.toLocaleDateString('pt-BR');
+        }
+
+        // Inicialização
+        const ageInWeeks = calculateAgeInWeeks(petData.birthDate);
+        console.log(`Pet tem ${ageInWeeks} semanas de idade`);
+
+        // Funções do Modal de Edição de Vacinas
+        function openEditModal() {
+            document.getElementById('editVaccineModal').style.display = 'block';
+            // Pré-preencher checkboxes baseado no status atual
+            document.getElementById('vac1').checked = true;
+            document.getElementById('date1').value = '2025-10-05';
+            document.getElementById('vac4').checked = true;
+            document.getElementById('date4').value = '2025-10-05';
+        }
+
+        function closeEditModal() {
+            document.getElementById('editVaccineModal').style.display = 'none';
+        }
+
+        function saveVaccines(event) {
+            event.preventDefault();
+            
+            const vaccines = [];
+            for (let i = 1; i <= 6; i++) {
+                const checkbox = document.getElementById('vac' + i);
+                const dateInput = document.getElementById('date' + i);
+                if (checkbox.checked && dateInput.value) {
+                    vaccines.push({
+                        id: checkbox.value,
+                        date: dateInput.value
+                    });
+                }
+            }
+
+            // Aqui você enviaria os dados para o PHP/banco de dados
+            console.log('Vacinas aplicadas:', vaccines);
+            
+            alert('✅ Vacinações atualizadas com sucesso!');
+            closeEditModal();
+            // Aqui você atualizaria a tabela de vacinas
+        }
+
+        // Funções do Modal de Adicionar Medicação
+        function openAddMedicationModal() {
+            document.getElementById('addMedicationModal').style.display = 'block';
+        }
+
+        function closeAddMedicationModal() {
+            document.getElementById('addMedicationModal').style.display = 'none';
+            document.getElementById('medicationForm').reset();
+        }
+
+        function addMedication(event) {
+            event.preventDefault();
+            
+            const medication = {
+                name: document.getElementById('medName').value,
+                dosage: document.getElementById('medDosage').value,
+                frequency: document.getElementById('medFrequency').value,
+                nextDate: document.getElementById('medNextDate').value,
+                notes: document.getElementById('medNotes').value
+            };
+
+            // Aqui você enviaria os dados para o PHP/banco de dados
+            console.log('Nova medicação:', medication);
+
+            // Adicionar visualmente na lista
+            const medicationsList = document.getElementById('medicationsList');
+            const newMedCard = document.createElement('div');
+            newMedCard.className = 'medication-card';
+            newMedCard.style.animation = 'slideDown 0.3s';
+            
+            const formattedDate = new Date(medication.nextDate).toLocaleDateString('pt-BR');
+            
+            newMedCard.innerHTML = `
+                <button class="delete-medication-btn" onclick="deleteMedication(this)">×</button>
+                <div class="medication-name">${medication.name}</div>
+                <div class="medication-info">📊 Dosagem: ${medication.dosage}</div>
+                <div class="medication-info">⏰ Frequência: ${medication.frequency}</div>
+                <div class="medication-date">Próxima aplicação: ${formattedDate}</div>
+                ${medication.notes ? `<div class="medication-info" style="margin-top: 8px; font-style: italic;">📝 ${medication.notes}</div>` : ''}
+            `;
+
+            medicationsList.appendChild(newMedCard);
+            
+            alert('✅ Medicação adicionada com sucesso!');
+            closeAddMedicationModal();
+        }
+
+        function deleteMedication(button) {
+            if (confirm('Tem certeza que deseja remover esta medicação?')) {
+                const card = button.closest('.medication-card');
+                card.style.animation = 'fadeOut 0.3s';
+                setTimeout(() => {
+                    card.remove();
+                    // Aqui você enviaria a requisição para deletar do banco de dados
+                    alert('✅ Medicação removida com sucesso!');
+                }, 300);
+            }
+        }
+
+        // Fechar modais ao clicar fora
+        window.onclick = function(event) {
+            const editModal = document.getElementById('editVaccineModal');
+            const addModal = document.getElementById('addMedicationModal');
+            
+            if (event.target == editModal) {
+                closeEditModal();
+            }
+            if (event.target == addModal) {
+                closeAddMedicationModal();
+            }
+        }
+
+        // Animação de fade out
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateX(0); }
+                to { opacity: 0; transform: translateX(100px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1117,215 +1117,454 @@ table {
  /* ========================================================== */
 /*Begin Section 14*/
 .section14 {
-  position: relative;
-  padding-top: 160px;
   background: #FEFFEF;
-  background-size: cover;
-  z-index: 10;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center; 
-  flex-direction: column;
-  text-align: center;
-  min-height: 100vh;
+  padding-top: 130px;
+  font-family: 'Poppins-Regular';
+  min-height: 165vh;
 }
 
-.sec14titleh2 {
-  font-family: 'Poppins-Bold';
-  font-size: 32px;
-  line-height: 42px;
-  text-align: center;
-  color: #038654;
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 20px;
+}
+
+.pet-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid white;
+  object-fit: cover;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+}
+
+.header-info{
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #038654 0%, rgb(96, 193, 101) 100%);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.header-info {
+  flex: 1;
+  color: white;
+}
+
+.header-info h1 {
+  font-size: 2.5em;
   margin-bottom: 10px;
 }
 
-.sec14subtitle {
-  font-family: 'Poppins-Regular';
-  font-size: 16px;
-  text-align: center;
-  color: #555;
-  margin-bottom: 40px;
+.header-info p {
+  font-size: 1.1em;
+  opacity: 0.95;
 }
 
-.sec14th1{
-  font-family: 'Poppins-Regular';
-  font-size: 16px;
-  text-align: center;
-}
-
-.sec14vacina{
-  font-family: 'Poppins-Regular';
-  font-size: 16px;
-  text-align: center;
-}
-
-.carteirinhavacina {
+.pet-details {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 107%;
+  gap: 30px;
+  margin-top: 15px;
 }
 
-.tablevacinacao {
-  width: 100%;
-  max-width: 800px;
-  border-collapse: collapse;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
+.pet-detail-item {
+  display: flex;
+  flex-direction: column;
 }
 
-.tablevacinacao thead {
-  background-color: #04a36d;
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
+.pet-detail-label {
+  font-size: 0.85em;
+  opacity: 0.8;
+  margin-bottom: 3px;
 }
 
-.tablevacinacao th, 
-.tablevacinacao td {
-  padding: 12px 10px;
-  border-bottom: 1px solid #e0e0e0;
+.pet-detail-value {
+  font-size: 1.1em;
+  font-weight: bold;
 }
 
-.tablevacinacao tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.tablevacinacao tbody tr:hover {
-  background-color: #f4fff8;
-  transition: background 0.3s ease;
-}
-
-.tablevacinacao .btn-outline-success {
-  border: 1px solid #04a36d;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 6px 14px;
-  color: #04a36d;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.tablevacinacao .btn-outline-success:hover {
-  background: #04a36d;
-  color: #fff;
-}
-
-.btn-outline-success {
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 6px 14px;
-  transition: all 0.3s ease;
-}
-
-.btn-outline-success:hover {
-  background: #04a36d;
-  color: #fff;
-}
-
-.sec14phAnimal{
+.nome-pet{
   font-family: 'Poppins-Bold';
-  font-size: 16px;
+  font-size: 30px;
+  color: #fff;
 }
 
-.sec14phinte{
-  font-family: 'Poppins-Regular';
-  font-size: 16px;
-  color: #000;
-}
-
-.animal-card-btn-no-bg {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.animal-card-btn-no-bg:hover {
-  transform: scale(1.02);
-  transition: all 0.2s;
-}
-
-.animal-card-img {
-  text-align: center;
-}
-
-.animal-card-img img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto;
-}
-
-.animal-card-btn {
-  display: flex;
-  align-items: left;
-  background-color: #fff;
+.vaccination-card {
+  background: white;
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto 30px auto;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.vaccination-card h2 {
+  color: #2e7d32;
+  font-size: 25px;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #81c784;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-btn, .add-btn {
+  background: linear-gradient(135deg, #66bb6a 0%, #81c784 100%);
+  color: white;
   border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  text-align: left;
-  width: 100%;
-}
-
-.animal-card-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-.animal-card {
+  font-weight: 600;
   display: flex;
   align-items: center;
-  background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto 30px auto;
+  gap: 8px;
+  transition: all 0.3s;
+  font-size: 16px;
 }
 
-.animal-card-img {
-  flex-shrink: 0;
-  width: 120px;
-  height: 120px;
+.edit-btn:hover, .add-btn:hover {
+  background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.add-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 15px;
+  font-size: 1em;
+}
+
+.vaccine-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.vaccine-table thead {
+  background: linear-gradient(135deg, #66bb6a 0%, #81c784 100%);
+  color: white;
+}
+
+.vaccine-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.vaccine-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.3s;
+}
+
+.vaccine-table tbody tr:hover {
+  background: #f1f8e9;
+}
+
+.vaccine-table td {
+  padding: 15px;
+}
+
+.vaccine-name {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.vaccine-subtitle {
+  font-size: 0.85em;
+  color: #666;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.status-done {
+  background: #c8e6c9;
+  color: #2e7d32;
+}
+
+.status-pending {
+  background: #fff9c4;
+  color: #f57f17;
+}
+
+.status-due {
+  background: #ffccbc;
+  color: #d84315;
+}
+
+.check-icon {
+  width: 20px;
+  height: 20px;
+  background: #4caf50;
   border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid #28a745; /* borda verde */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
 }
 
-.animal-card-img img {
+.medications-panel {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  height: fit-content;
+}
+
+.medications-panel h2 {
+  color: #2e7d32;
+  font-size: 22px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #81c784;
+  padding-bottom: 10px;
+}
+
+.medication-card {
+  background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border-left: 4px solid #66bb6a;
+}
+
+.medication-name {
+  font-weight: 600;
+  color: #2e7d32;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+}
+
+.medication-info {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.medication-date {
+  font-size: 0.85em;
+  color: #777;
+  font-style: italic;
+}
+
+.age-alert {
+  background: #fff9c4;
+  border-left: 4px solid #fbc02d;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.age-alert strong {
+  color: #f57f17;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-color: rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s;
 }
 
-.animal-card-info h3 {
-  margin: 0;
-  font-size: 24px;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideDown 0.3s;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #81c784;
+  padding-bottom: 15px;
+}
+
+.modal-header h3 {
+  color: #2e7d32;
+  font-size: 20px;
+}
+
+.close-btn {
+  background: #e53935;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.close-btn:hover {
+  background: #c62828;
+  transform: rotate(90deg);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #2e7d32;
   font-weight: 600;
-  color: #333;
+  margin-bottom: 8px;
 }
 
-.animal-card-info p {
-  margin: 4px 0;
-  font-size: 16px;
-  color: #555;
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #c8e6c9;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: border 0.3s;
 }
 
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #66bb6a;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: #f1f8e9;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.checkbox-group:hover {
+  background: #e8f5e9;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.checkbox-group label {
+  flex: 1;
+  cursor: pointer;
+  margin: 0;
+}
+
+.checkbox-group .vaccine-date-input {
+  width: 150px;
+  font-size: 13px;
+  padding: 8px;
+  border: 2px solid #c8e6c9;
+  border-radius: 6px;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #66bb6a 0%, #81c784 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.save-btn:hover {
+  background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.medication-card {
+  background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border-left: 4px solid #66bb6a;
+  position: relative;
+}
+
+.delete-medication-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e53935;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.delete-medication-btn:hover {
+  background: #c62828;
+  transform: scale(1.1);
+}
+
+@media (max-width: 1024px) {
+  .container {
+      grid-template-columns: 1fr;
+  }
+}
 /*End Section 14*/
 
  /* ========================================================== */
