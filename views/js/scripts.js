@@ -372,6 +372,123 @@ infoItems.forEach(item => {
 });
 });
 
+// Abre o modal de lembrete
+function addReminder() {
+  const modal = document.getElementById('reminderModal');
+  modal.style.display = 'block';
+}
+
+// Fecha o modal de lembrete
+function closeReminderModal() {
+  const modal = document.getElementById('reminderModal');
+  modal.style.display = 'none';
+  document.getElementById('reminderTitle').value = '';
+  document.getElementById('reminderDate').value = '';
+  document.getElementById('reminderPriority').value = 'normal';
+}
+
+// Salva o lembrete e adiciona na lista
+function saveReminder(event) {
+  event.preventDefault(); // impede o reload da página
+
+  const title = document.getElementById('reminderTitle').value;
+  const date = document.getElementById('reminderDate').value;
+  const priority = document.getElementById('reminderPriority').value;
+  const list = document.getElementById('remindersList');
+
+  // Escolhe cor de acordo com a prioridade
+  let borderColor;
+  if (priority === 'high') borderColor = '#ff6b6b';
+  else if (priority === 'low') borderColor = '#90EE90';
+  else borderColor = '#ffc107';
+
+  // Calcula quantos dias faltam
+  const daysDiff = Math.ceil((new Date(date) - new Date()) / (1000 * 60 * 60 * 24));
+  const daysText = daysDiff > 0 ? `Em ${daysDiff} dia${daysDiff > 1 ? 's' : ''}` : 'Hoje!';
+
+  // Cria o lembrete no HTML
+  const reminderItem = document.createElement('div');
+  reminderItem.className = 'reminder-item';
+  reminderItem.style.cssText = `
+      padding: 10px;
+      background: #f8fdf8;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      border-left: 3px solid ${borderColor};
+  `;
+  reminderItem.innerHTML = `
+      <strong>${title}</strong><br>
+      <small style="color: #666;">${daysText}</small>
+  `;
+
+  // Adiciona o lembrete à lista
+  list.appendChild(reminderItem);
+
+  // Fecha o modal e notifica o usuário
+  closeReminderModal();
+  showNotification('Lembrete adicionado com sucesso!', 'success');
+}
+
+// Fecha o modal se o usuário clicar fora do conteúdo
+window.onclick = function(event) {
+  const modal = document.getElementById('reminderModal');
+  if (event.target === modal) {
+      closeReminderModal();
+  }
+};
+
+// ---------------- FUNÇÕES DE MEDICAÇÃO ----------------
+
+// Abre o modal de medicação
+function addMedication() {
+  const modal = document.getElementById('medicationModal');
+  modal.style.display = 'block';
+}
+
+// Fecha o modal de medicação
+function closeMedicationModal() {
+  const modal = document.getElementById('medicationModal');
+  modal.style.display = 'none';
+  document.getElementById('medicationName').value = '';
+  document.getElementById('medicationDate').value = '';
+  document.getElementById('medicationDose').value = '';
+  document.getElementById('medicationVet').value = '';
+}
+
+// Salva a medicação e adiciona na tabela
+function saveMedication(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('medicationName').value;
+  const date = document.getElementById('medicationDate').value;
+  const dose = document.getElementById('medicationDose').value;
+  const vet = document.getElementById('medicationVet').value;
+  const tableBody = document.getElementById('medicationTableBody');
+
+  // Cria uma nova linha da tabela
+  const newRow = document.createElement('tr');
+  newRow.innerHTML = `
+      <td>${name}</td>
+      <td>${dose}</td>
+      <td>${date}</td>
+      <td>${vet}</td>
+  `;
+
+  tableBody.appendChild(newRow);
+
+  closeMedicationModal();
+  showNotification('Medicação adicionada com sucesso!', 'success');
+}
+
+// Fecha o modal se clicar fora
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById('medicationModal');
+  if (event.target === modal) {
+      closeMedicationModal();
+  }
+});
+
+
 /* ========================================================== */
 /*   Termos de Uso.                                           */
 /* ========================================================== */

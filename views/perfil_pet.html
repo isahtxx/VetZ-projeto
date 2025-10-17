@@ -42,8 +42,8 @@
                         </div>
                         <input type="file" id="avatarInput" class="file-input" accept="image/*" onchange="changeAvatar(event)">
                         
-                        <div class="pet-name" id="petName">Max</div>
-                        <div class="pet-breed" id="petBreed">Golden Retriever • 3 anos</div>
+                        <div class="pet-name" id="petName">Mané (Luck)</div>
+                        <div class="pet-breed" id="petBreed">Vira-lata • 6 anos</div>
                     </div>
 
                     <div class="profile-content">
@@ -52,23 +52,27 @@
                             <div class="info-grid">
                                 <div class="info-item">
                                     <div class="info-label">Nome</div>
-                                    <div class="info-value" id="name">Max</div>
+                                    <div class="info-value" id="name">Luck (mané)</div>
                                 </div>
                                 <div class="info-item">
                                     <div class="info-label">Idade</div>
-                                    <div class="info-value" id="age">3 anos</div>
+                                    <div class="info-value" id="age">6 anos</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Nascimento</div>
+                                    <div class="info-value" id="gender">17/10/2019</div>
                                 </div>
                                 <div class="info-item">
                                     <div class="info-label">Raça</div>
-                                    <div class="info-value" id="breed">Golden Retriever</div>
+                                    <div class="info-value" id="breed">Vira-Lata</div>
                                 </div>
                                 <div class="info-item">
                                     <div class="info-label">Peso</div>
-                                    <div class="info-value" id="weight">28 kg</div>
+                                    <div class="info-value" id="weight">15 kg</div>
                                 </div>
                                 <div class="info-item">
                                     <div class="info-label">Cor</div>
-                                    <div class="info-value" id="color">Dourado</div>
+                                    <div class="info-value" id="color">Preto</div>
                                 </div>
                                 <div class="info-item">
                                     <div class="info-label">Sexo</div>
@@ -88,15 +92,15 @@
                                 </div>
                                 <div class="info-item">
                                     <div class="info-label">Última Consulta</div>
-                                    <div class="info-value" id="lastVisit">15/08/2024</div>
+                                    <div class="info-value" id="lastVisit">15/08/2025</div>
                                 </div>
                                 <div class="info-item">
                                     <div class="info-label">Próxima Vacina</div>
-                                    <div class="info-value" id="nextVaccine">20/10/2024</div>
+                                    <div class="info-value" id="nextVaccine">20/10/2025</div>
                                 </div>
                                 <div class="info-item">
                                     <div class="info-label">Veterinário</div>
-                                    <div class="info-value" id="vet">Dr. Ana Silva</div>
+                                    <div class="info-value" id="vet">Dr. Camilla Garcez</div>
                                 </div>
                             </div>
                         </div>
@@ -106,19 +110,19 @@
                             <div class="info-grid">
                                 <div class="info-item">
                                     <div class="info-label">Nome</div>
-                                    <div class="info-value" id="ownerName">João Santos</div>
+                                    <div class="info-value" id="ownerName">Marcela Sanches</div>
                                 </div>
                                 <div class="info-item">
                                     <div class="info-label">Telefone</div>
                                     <div class="info-value" id="ownerPhone">(11) 99999-9999</div>
                                 </div>
                                 <div class="info-item">
-                                    <div class="info-label">Email</div>
-                                    <div class="info-value" id="ownerEmail">joao@email.com</div>
-                                </div>
-                                <div class="info-item">
                                     <div class="info-label">Endereço</div>
                                     <div class="info-value" id="address">São Paulo, SP</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Email</div>
+                                    <div class="info-value" id="ownerEmail">marcelasanches@email.com</div>
                                 </div>
                             </div>
                         </div>
@@ -126,6 +130,36 @@
                 </div>
 
                 <div class="sidebar">
+                    <div class="sidebar-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="color: #2d5016; margin: 0;">Lembretes</h4>
+                            <button class="add-reminder-btn" onclick="addReminder()" title="Adicionar lembrete">
+                                +
+                            </button>
+                        </div>
+                        <div style="text-align: left;" id="remindersList">
+                            <div class="reminder-item" style="padding: 10px; background: #f8fdf8; border-radius: 6px; margin-bottom: 10px; border-left: 3px solid #90EE90;">
+                                <strong>Vacinação</strong><br>
+                                <small style="color: #666;">Em 5 dias</small>
+                            </div>
+                            <div class="reminder-item" style="padding: 10px; background: #f8fdf8; border-radius: 6px; border-left: 3px solid #ffc107;">
+                                <strong>Check-up Anual</strong><br>
+                                <small style="color: #666;">Em 15 dias</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card vaccination-preview">
+                        <div class="vaccination-icon">💉</div>
+                        <h4 style="color: #2d5016; margin-bottom: 10px;">Carteirinha Digital</h4>
+                        <p style="color: #4a7c23; font-size: 14px; margin-bottom: 15px;">
+                            Todas as vacinas em dia! Próxima dose em 30 dias.
+                        </p>
+                        <button class="btn btn-primary" onclick="openVaccinationCard()">
+                            Ver Carteirinha
+                        </button>
+                    </div>
+
                     <div class="sidebar-card">
                         <h3 style="color: #2d5016; margin-bottom: 20px;">Ações Rápidas</h3>
                         <div class="quick-actions">
@@ -144,35 +178,6 @@
                         </div>
                     </div>
 
-                    <div class="sidebar-card vaccination-preview">
-                        <div class="vaccination-icon">💉</div>
-                        <h4 style="color: #2d5016; margin-bottom: 10px;">Carteirinha Digital</h4>
-                        <p style="color: #4a7c23; font-size: 14px; margin-bottom: 15px;">
-                            Todas as vacinas em dia! Próxima dose em 30 dias.
-                        </p>
-                        <button class="btn btn-primary" onclick="openVaccinationCard()">
-                            Ver Carteirinha
-                        </button>
-                    </div>
-
-                    <div class="sidebar-card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                            <h4 style="color: #2d5016; margin: 0;">Lembretes</h4>
-                            <button class="add-reminder-btn" onclick="addReminder()" title="Adicionar lembrete">
-                                +
-                            </button>
-                        </div>
-                        <div style="text-align: left;" id="remindersList">
-                            <div class="reminder-item" style="padding: 10px; background: #f8fdf8; border-radius: 6px; margin-bottom: 10px; border-left: 3px solid #90EE90;">
-                                <strong>Vermifugação</strong><br>
-                                <small style="color: #666;">Em 5 dias</small>
-                            </div>
-                            <div class="reminder-item" style="padding: 10px; background: #f8fdf8; border-radius: 6px; border-left: 3px solid #ffc107;">
-                                <strong>Check-up Anual</strong><br>
-                                <small style="color: #666;">Em 15 dias</small>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -210,6 +215,39 @@
                         </div>
                     </form>
                 </div>
+
+            <!-- Modal para adicionar medicação -->
+            <div id="medicationModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Nova Medicação</h3>
+                        <button class="close-modal" onclick="closeMedicationModal()">&times;</button>
+                    </div>
+                    <form onsubmit="saveMedication(event)">
+                        <div class="form-group">
+                            <label class="form-label">Nome da Medicação</label>
+                            <input type="text" id="medicationName" class="form-control" placeholder="Ex: Vermífugo, Antibiótico..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Dose</label>
+                            <input type="text" id="medicationDose" class="form-control" placeholder="Ex: 10ml, 1 comprimido..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Data</label>
+                            <input type="date" id="medicationDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Veterinário Responsável</label>
+                            <input type="text" id="medicationVet" class="form-control" placeholder="Nome do veterinário" required>
+                        </div>
+                        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                            <button type="button" class="btn btn-secondary" onclick="closeMedicationModal()">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Salvar Medicação</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </section>
 
         <!-- Load JS =============================-->
