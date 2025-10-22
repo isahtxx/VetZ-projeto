@@ -315,8 +315,8 @@ function abrirPopup(vacina, dose) {
   //     bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
   //   }
 
-    /* ========================================================== */
-	/*   Termos de Uso.                             */
+  /* ========================================================== */
+	/*   Termos de Uso.                                           */
 	/* ========================================================== */
   document.getElementById("botaoNext").addEventListener("click", function () {
   const checkbox = document.getElementById("aceite");
@@ -339,15 +339,10 @@ function abrirPopup(vacina, dose) {
   }
 
 
-
-
       currentCard.querySelector('h5').innerHTML = `<strong>${newName}</strong>`;
       currentCard.querySelector('p').textContent = newDesc;
 
       bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
-    
-
-
 
 
 function mostrarPopup() {
@@ -363,266 +358,474 @@ function fecharPopup() {
   document.getElementById('popup-codigo').style.display = 'none';
 }
 
+  /* ========================================================== */
+  /*   Vacinação Pet.                                           */
+  /* ========================================================== */
 
+// Dados simulados do banco de dados
+const petData = {
+  name: "Luck",
+  species: "Cachorro",
+  breed: "Vira-lata",
+  birthDate: "2019-10-17",
+  owner: "Marcela Sanches",
+  photo: "🐕"
+};
 
-  /* ========================================================== */
-	/*   Perfil usuário.                                          */
-	/* ========================================================== */
+// Função para calcular a idade em semanas
+function calculateAgeInWeeks(birthDate) {
+  const birth = new Date(birthDate);
+  const today = new Date();
+  const diffTime = Math.abs(today - birth);
+  const diffWeeks = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 7));
+  return diffWeeks;
+}
+
+// Função para gerar calendário de vacinação baseado na idade
+function generateVaccinationSchedule(ageInWeeks, birthDate) {
+  const birth = new Date(birthDate);
+  const vaccines = [];
+
+  // Polivalente doses
+  if (ageInWeeks >= 6) {
+      vaccines.push({
+          name: "Polivalente V8/V10",
+          subtitle: "1ª Dose - A partir de 6 semanas",
+          status: "done",
+          appliedDate: addWeeks(birth, 6),
+          nextDate: addWeeks(birth, 9)
+      });
+  }
+  
+  if (ageInWeeks >= 9) {
+      vaccines.push({
+          name: "Polivalente V8/V10",
+          subtitle: "2ª Dose - 9 semanas",
+          status: ageInWeeks === 9 ? "pending" : "done",
+          appliedDate: ageInWeeks > 9 ? addWeeks(birth, 9) : null,
+          nextDate: addWeeks(birth, 12)
+      });
+  } else {
+      vaccines.push({
+          name: "Polivalente V8/V10",
+          subtitle: "2ª Dose - 9 semanas",
+          status: "pending",
+          appliedDate: null,
+          nextDate: addWeeks(birth, 9)
+      });
+  }
+
+  return vaccines;
+}
+
+function addWeeks(date, weeks) {
+  const result = new Date(date);
+  result.setDate(result.getDate() + (weeks * 7));
+  return result.toLocaleDateString('pt-BR');
+}
+
+// Inicialização
+const ageInWeeks = calculateAgeInWeeks(petData.birthDate);
+console.log(`Pet tem ${ageInWeeks} semanas de idade`);
+
+// Funções do Modal de Edição de Vacinas
+function openEditModal() {
+  document.getElementById('editVaccineModal').style.display = 'block';
+  // Pré-preencher checkboxes baseado no status atual
+  document.getElementById('vac1').checked = true;
+  document.getElementById('date1').value = '2025-10-05';
+  document.getElementById('vac4').checked = true;
+  document.getElementById('date4').value = '2025-10-05';
+}
+
+function closeEditModal() {
+  document.getElementById('editVaccineModal').style.display = 'none';
+}
+
+function saveVaccines(event) {
+  event.preventDefault();
+  
+  const vaccines = [];
+  for (let i = 1; i <= 6; i++) {
+      const checkbox = document.getElementById('vac' + i);
+      const dateInput = document.getElementById('date' + i);
+      if (checkbox.checked && dateInput.value) {
+          vaccines.push({
+              id: checkbox.value,
+              date: dateInput.value
+          });
+      }
+  }
+
+  // Atualiza visualmente o status da tabela
+  const rows = document.querySelectorAll('.vaccine-table tbody tr');
+  vaccines.forEach((vaccine, index) => {
+      const row = rows[index];
+      if (row) {
+          const statusCell = row.querySelector('td:nth-child(2)');
+          const dateCell = row.querySelector('td:nth-child(3)');
+          
+          // Atualiza a data de aplicação
+          const formattedDate = new Date(vaccine.date).toLocaleDateString('pt-BR');
+          dateCell.textContent = formattedDate;
+
+          // Atualiza o status para "Aplicada" com o check
+          statusCell.innerHTML = `
+              <span class="status-badge status-done">
+                  <span class="check-icon">✓</span>
+                  Aplicada
+              </span>
+          `;
+      }
+  });
+
+  // Aqui você enviaria os dados para o PHP/banco de dados
+  console.log('Vacinas aplicadas:', vaccines);
+  
+  alert('✅ Vacinações atualizadas com sucesso!');
+  closeEditModal();
+}
+
+// Funções do Modal de Adicionar Medicação
+function openAddMedicationModal() {
+  document.getElementById('addMedicationModal').style.display = 'block';
+}
+
+function closeAddMedicationModal() {
+  document.getElementById('addMedicationModal').style.display = 'none';
+  document.getElementById('medicationForm').reset();
+}
+
+function addMedication(event) {
+  event.preventDefault();
+  
+  const medication = {
+      name: document.getElementById('medName').value,
+      dosage: document.getElementById('medDosage').value,
+      frequency: document.getElementById('medFrequency').value,
+      nextDate: document.getElementById('medNextDate').value,
+      notes: document.getElementById('medNotes').value
+  };
+
+  // Aqui você enviaria os dados para o PHP/banco de dados
+  console.log('Nova medicação:', medication);
+
+  // Adicionar visualmente na lista
+  const medicationsList = document.getElementById('medicationsList');
+  const newMedCard = document.createElement('div');
+  newMedCard.className = 'medication-card';
+  newMedCard.style.animation = 'slideDown 0.3s';
+  
+  const formattedDate = new Date(medication.nextDate).toLocaleDateString('pt-BR');
+  
+  newMedCard.innerHTML = `
+      <button class="delete-medication-btn" onclick="deleteMedication(this)">×</button>
+      <div class="medication-name">${medication.name}</div>
+      <div class="medication-info">📊 Dosagem: ${medication.dosage}</div>
+      <div class="medication-info">⏰ Frequência: ${medication.frequency}</div>
+      <div class="medication-date">Próxima aplicação: ${formattedDate}</div>
+      ${medication.notes ? `<div class="medication-info" style="margin-top: 8px; font-style: italic;">📝 ${medication.notes}</div>` : ''}
+  `;
+
+  medicationsList.appendChild(newMedCard);
+  
+  alert('✅ Medicação adicionada com sucesso!');
+  closeAddMedicationModal();
+}
+
+function deleteMedication(button) {
+  if (confirm('Tem certeza que deseja remover esta medicação?')) {
+      const card = button.closest('.medication-card');
+      card.style.animation = 'fadeOut 0.3s';
+      setTimeout(() => {
+          card.remove();
+          // Aqui você enviaria a requisição para deletar do banco de dados
+          alert('✅ Medicação removida com sucesso!');
+      }, 300);
+  }
+}
+
+// Fechar modais ao clicar fora
+window.onclick = function(event) {
+  const editModal = document.getElementById('editVaccineModal');
+  const addModal = document.getElementById('addMedicationModal');
+  
+  if (event.target == editModal) {
+      closeEditModal();
+  }
+  if (event.target == addModal) {
+      closeAddMedicationModal();
+  }
+}
+
+// Animação de fade out
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fadeOut {
+      from { opacity: 1; transform: translateX(0); }
+      to { opacity: 0; transform: translateX(100px); }
+  }
+`;
+document.head.appendChild(style);
+
+  /* ========================================================== */
+  /*   Perfil usuário.                                          */
+  /* ========================================================== */
 function previewAvatar(event) {
-  const input = event.target;
-  const file = input.files[0];
-  const reader = new FileReader();
+  const input = event.target;
+  const file = input.files[0];
+  const reader = new FileReader();
 
-  reader.onload = function() {
-    const avatarImage = document.getElementById('avatarImage');
-    avatarImage.src = reader.result;
-  };
+  reader.onload = function() {
+    const avatarImage = document.getElementById('avatarImage');
+    avatarImage.src = reader.result;
+  };
 
-  if (file) {
-    reader.readAsDataURL(file);
-  }
+  if (file) {
+    reader.readAsDataURL(file);
+  }
 }
 
 // ==================== DADOS DOS PETS ====================
 var pets = [
-    {
-        id: 1,
-        nome: "Shakira",
-        especie: "Gato",
-        idade: 3,
-        emoji: "🐱",
-        foto: null
-    },
-    {
-        id: 2,
-        nome: "Mané (Luck)",
-        especie: "Cachorro",
-        idade: 6,
-        emoji: "🐶",
-        foto: null
-    }
+    {
+        id: 1,
+        nome: "Shakira",
+        especie: "Gato",
+        idade: 3,
+        emoji: "🐱",
+        foto: null
+    },
+    {
+        id: 2,
+        nome: "Mané (Luck)",
+        especie: "Cachorro",
+        idade: 6,
+        emoji: "🐶",
+        foto: null
+    }
 ];
 
 var nextPetId = 3;
 
 // ==================== EMOJIS POR ESPÉCIE ====================
 var emojis = {
-    'Cachorro': '🐶',
-    'Gato': '🐱',
-    'Coelho': '🐰',
-    'Pássaro': '🐦',
-    'Hamster': '🐹',
-    'Peixe': '🐠',
-    'Tartaruga': '🐢',
-    'Outro': '🐾'
+    'Cachorro': '🐶',
+    'Gato': '🐱',
+    'Coelho': '🐰',
+    'Pássaro': '🐦',
+    'Hamster': '🐹',
+    'Peixe': '🐠',
+    'Tartaruga': '🐢',
+    'Outro': '🐾'
 };
 
 // ==================== FUNÇÕES DO MODAL ====================
 function abrirModal() {
-    var modal = document.getElementById('addPetModal');
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+    var modal = document.getElementById('addPetModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
 }
 
 function fecharModal() {
-    var modal = document.getElementById('addPetModal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-    
-    // Limpar formulário
-    document.getElementById('addPetForm').reset();
-    document.getElementById('petPhotoPreview').style.display = 'none';
-    document.getElementById('photoPreview').style.display = 'flex';
+    var modal = document.getElementById('addPetModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    
+    // Limpar formulário
+    document.getElementById('addPetForm').reset();
+    document.getElementById('petPhotoPreview').style.display = 'none';
+    document.getElementById('photoPreview').style.display = 'flex';
 }
 
 // ==================== RENDERIZAR PETS ====================
 function renderizarPets() {
-    var petsGrid = document.getElementById('petsGrid');
-    petsGrid.innerHTML = '';
-    
-    for (var i = 0; i < pets.length; i++) {
-        var pet = pets[i];
-        var petCard = document.createElement('div');
-        petCard.className = 'pet-card';
-        
-        var avatarHTML = '';
-        if (pet.foto) {
-            avatarHTML = '<img src="' + pet.foto + '" alt="' + pet.nome + '" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">';
-        } else {
-            avatarHTML = pet.emoji;
-        }
-        
-        petCard.innerHTML = 
-            '<div class="pet-avatar">' + avatarHTML + '</div>' +
-            '<div class="pet-name">' + pet.nome + '</div>' +
-            '<div class="pet-info">' + pet.especie + ' • ' + pet.idade + (pet.idade === 1 ? ' ano' : ' anos') + '</div>' +
-            '<button class="view-profile-btn" onclick="abrirPerfilPet(' + pet.id + ')">Ver Perfil</button>';
-        
-        petsGrid.appendChild(petCard);
-    }
+    var petsGrid = document.getElementById('petsGrid');
+    petsGrid.innerHTML = '';
+    
+    for (var i = 0; i < pets.length; i++) {
+        var pet = pets[i];
+        var petCard = document.createElement('div');
+        petCard.className = 'pet-card';
+        
+        var avatarHTML = '';
+        if (pet.foto) {
+            avatarHTML = '<img src="' + pet.foto + '" alt="' + pet.nome + '" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">';
+        } else {
+            avatarHTML = pet.emoji;
+        }
+        
+        petCard.innerHTML = 
+            '<div class="pet-avatar">' + avatarHTML + '</div>' +
+            '<div class="pet-name">' + pet.nome + '</div>' +
+            '<div class="pet-info">' + pet.especie + ' • ' + pet.idade + (pet.idade === 1 ? ' ano' : ' anos') + '</div>' +
+            '<button class="view-profile-btn" onclick="abrirPerfilPet(' + pet.id + ')">Ver Perfil</button>';
+        
+        petsGrid.appendChild(petCard);
+    }
 }
 
 // ==================== ABRIR PERFIL DO PET ====================
 function abrirPerfilPet(petId) {
-    var pet = null;
-    for (var i = 0; i < pets.length; i++) {
-        if (pets[i].id === petId) {
-            pet = pets[i];
-            break;
-        }
-    }
-    
-    if (pet) {
-        alert('Abrindo perfil de ' + pet.nome + '...\n\nEspécie: ' + pet.especie + '\nIdade: ' + pet.idade + (pet.idade === 1 ? ' ano' : ' anos'));
-    }
+    var pet = null;
+    for (var i = 0; i < pets.length; i++) {
+        if (pets[i].id === petId) {
+            pet = pets[i];
+            break;
+        }
+    }
+    
+    if (pet) {
+        alert('Abrindo perfil de ' + pet.nome + '...\n\nEspécie: ' + pet.especie + '\nIdade: ' + pet.idade + (pet.idade === 1 ? ' ano' : ' anos'));
+    }
 }
 
 // ==================== SALVAR PET ====================
 function salvarPet(event) {
-    event.preventDefault();
-    
-    var nome = document.getElementById('petNameInput').value.trim();
-    var especie = document.getElementById('petSpeciesInput').value;
-    var idade = parseInt(document.getElementById('petAgeInput').value);
-    var fotoInput = document.getElementById('petPhotoInput');
-    
-    if (!nome || !especie || isNaN(idade)) {
-        alert('Por favor, preencha todos os campos obrigatórios!');
-        return;
-    }
-    
-    var novoPet = {
-        id: nextPetId++,
-        nome: nome,
-        especie: especie,
-        idade: idade,
-        emoji: emojis[especie] || '🐾',
-        foto: null
-    };
-    
-    if (fotoInput.files.length > 0) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            novoPet.foto = e.target.result;
-            pets.push(novoPet);
-            renderizarPets();
-            fecharModal();
-            mostrarMensagem(nome + ' foi adicionado com sucesso!');
-        };
-        reader.readAsDataURL(fotoInput.files[0]);
-    } else {
-        pets.push(novoPet);
-        renderizarPets();
-        fecharModal();
-        mostrarMensagem(nome + ' foi adicionado com sucesso!');
-    }
+    event.preventDefault();
+    
+    var nome = document.getElementById('petNameInput').value.trim();
+    var especie = document.getElementById('petSpeciesInput').value;
+    var idade = parseInt(document.getElementById('petAgeInput').value);
+    var fotoInput = document.getElementById('petPhotoInput');
+    
+    if (!nome || !especie || isNaN(idade)) {
+        alert('Por favor, preencha todos os campos obrigatórios!');
+        return;
+    }
+    
+    var novoPet = {
+        id: nextPetId++,
+        nome: nome,
+        especie: especie,
+        idade: idade,
+        emoji: emojis[especie] || '🐾',
+        foto: null
+    };
+    
+    if (fotoInput.files.length > 0) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            novoPet.foto = e.target.result;
+            pets.push(novoPet);
+            renderizarPets();
+            fecharModal();
+            mostrarMensagem(nome + ' foi adicionado com sucesso!');
+        };
+        reader.readAsDataURL(fotoInput.files[0]);
+    } else {
+        pets.push(novoPet);
+        renderizarPets();
+        fecharModal();
+        mostrarMensagem(nome + ' foi adicionado com sucesso!');
+    }
 }
 
 // ==================== MENSAGEM DE SUCESSO ====================
 function mostrarMensagem(texto) {
-    var msg = document.createElement('div');
-    msg.textContent = texto;
-    msg.style.cssText = 
-        'position: fixed; top: 20px; right: 20px; background: #4CAF50; color: white; ' +
-        'padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); ' +
-        'z-index: 10000; font-family: Arial, sans-serif; opacity: 0; transition: opacity 0.3s;';
-    
-    document.body.appendChild(msg);
-    setTimeout(function() { msg.style.opacity = '1'; }, 10);
-    setTimeout(function() {
-        msg.style.opacity = '0';
-        setTimeout(function() { msg.remove(); }, 300);
-    }, 3000);
+    var msg = document.createElement('div');
+    msg.textContent = texto;
+    msg.style.cssText = 
+        'position: fixed; top: 20px; right: 20px; background: #4CAF50; color: white; ' +
+        'padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); ' +
+        'z-index: 10000; font-family: Arial, sans-serif; opacity: 0; transition: opacity 0.3s;';
+    
+    document.body.appendChild(msg);
+    setTimeout(function() { msg.style.opacity = '1'; }, 10);
+    setTimeout(function() {
+        msg.style.opacity = '0';
+        setTimeout(function() { msg.remove(); }, 300);
+    }, 3000);
 }
 
 // ==================== UPLOAD DE IMAGENS ====================
 function alterarAvatar(event) {
-    var file = event.target.files[0];
-    if (file) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('avatarImage').src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
+    var file = event.target.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('avatarImage').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
 }
 
 function alterarBanner(event) {
-    var file = event.target.files[0];
-    if (file) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            var header = document.getElementById('profileHeader');
-            header.style.backgroundImage = 'url(' + e.target.result + ')';
-            header.style.backgroundSize = 'cover';
-            header.style.backgroundPosition = 'center';
-        };
-        reader.readAsDataURL(file);
-    }
+    var file = event.target.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var header = document.getElementById('profileHeader');
+            header.style.backgroundImage = 'url(' + e.target.result + ')';
+            header.style.backgroundSize = 'cover';
+            header.style.backgroundPosition = 'center';
+        };
+        reader.readAsDataURL(file);
+    }
 }
 
 function previewFotoPet(event) {
-    var file = event.target.files[0];
-    if (file) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('petPhotoPreview').src = e.target.result;
-            document.getElementById('petPhotoPreview').style.display = 'block';
-            document.getElementById('photoPreview').style.display = 'none';
-        };
-        reader.readAsDataURL(file);
-    }
+    var file = event.target.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('petPhotoPreview').src = e.target.result;
+            document.getElementById('petPhotoPreview').style.display = 'block';
+            document.getElementById('photoPreview').style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    }
 }
 
 // ==================== INICIALIZAÇÃO ====================
 window.addEventListener('DOMContentLoaded', function() {
-    console.log('VetZ Script Carregado!');
-    
-    // Renderizar pets
-    renderizarPets();
-    
-    // Botão adicionar pet
-    document.getElementById('addPetButton').addEventListener('click', abrirModal);
-    
-    // Botões fechar modal
-    document.getElementById('closeModalBtn').addEventListener('click', fecharModal);
-    document.getElementById('cancelBtn').addEventListener('click', fecharModal);
-    
-    // Fechar modal ao clicar fora
-    document.getElementById('addPetModal').addEventListener('click', function(e) {
-        if (e.target.id === 'addPetModal') {
-            fecharModal();
-        }
-    });
-    
-    // Fechar com ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            fecharModal();
-        }
-    });
-    
-    // Formulário de adicionar pet
-    document.getElementById('addPetForm').addEventListener('submit', salvarPet);
-    
-    // Upload de avatar
-    document.getElementById('avatarUploadBtn').addEventListener('click', function() {
-        document.getElementById('avatarInput').click();
-    });
-    document.getElementById('avatarInput').addEventListener('change', alterarAvatar);
-    
-    // Upload de banner
-    document.getElementById('bannerUploadBtn').addEventListener('click', function() {
-        document.getElementById('bannerInput').click();
-    });
-    document.getElementById('bannerInput').addEventListener('change', alterarBanner);
-    
-    // Upload de foto do pet
-    document.getElementById('photoUploadArea').addEventListener('click', function() {
-        document.getElementById('petPhotoInput').click();
-    });
-    document.getElementById('petPhotoInput').addEventListener('change', previewFotoPet);
-    
-    // Ano no footer
-    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    console.log('VetZ Script Carregado!');
+    
+    // Renderizar pets
+    renderizarPets();
+    
+    // Botão adicionar pet
+    document.getElementById('addPetButton').addEventListener('click', abrirModal);
+    
+    // Botões fechar modal
+    document.getElementById('closeModalBtn').addEventListener('click', fecharModal);
+    document.getElementById('cancelBtn').addEventListener('click', fecharModal);
+    
+    // Fechar modal ao clicar fora
+    document.getElementById('addPetModal').addEventListener('click', function(e) {
+        if (e.target.id === 'addPetModal') {
+            fecharModal();
+        }
+    });
+    
+    // Fechar com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            fecharModal();
+        }
+    });
+    
+    // Formulário de adicionar pet
+    document.getElementById('addPetForm').addEventListener('submit', salvarPet);
+    
+    // Upload de avatar
+    document.getElementById('avatarUploadBtn').addEventListener('click', function() {
+        document.getElementById('avatarInput').click();
+    });
+    document.getElementById('avatarInput').addEventListener('change', alterarAvatar);
+    
+    // Upload de banner
+    document.getElementById('bannerUploadBtn').addEventListener('click', function() {
+        document.getElementById('bannerInput').click();
+    });
+    document.getElementById('bannerInput').addEventListener('change', alterarBanner);
+    
+    // Upload de foto do pet
+    document.getElementById('photoUploadArea').addEventListener('click', function() {
+        document.getElementById('petPhotoInput').click();
+    });
+    document.getElementById('petPhotoInput').addEventListener('change', previewFotoPet);
+    
+    // Ano no footer
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
 });
