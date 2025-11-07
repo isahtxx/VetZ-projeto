@@ -128,23 +128,27 @@ ob_start();
                 <h1 class="sec006titleh1">Página de Vacinações!</h1>
                 <p class="sec06ph1">Nesta página você poderá acessar as vacinações do seu pet.</p>
                 <div class="info-cards">
-                    <div class="info-card">
-                        <h2 class="sec06infosh2">Proteção</h2>
-                        <p class="sec06infos">As vacinas são essenciais para proteger a saúde do seu pet e prevenir doenças graves.</p>
-                    </div>
-                    <div class="info-card">
-                        <h2 class="sec06infosh2">Segurança</h2>
-                        <p class="sec06infos">Elas evitam riscos tanto para os animais quanto para os humanos que convivem com eles.</p>
-                    </div>
-                    <div class="info-card">
-                        <h2 class="sec06infosh2">Acompanhamento</h2>
-                        <p class="sec06infos">Você pode visualizar e acompanhar as vacinações do seu cachorro ou gato.</p>
-                    </div>
+                        <div class="info-card">
+                            <i class="fas fa-syringe fa-2x text-success mb-2"></i>
+                            <h2 class="sec06infosh2">Controle de Vacinação</h2>
+                            <p class="sec06infos">Histórico completo de vacinas com datas, doses e certificados.</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-calendar-alt fa-2x text-success mb-2"></i>
+                            <h2 class="sec06infosh2">Lembretes Automáticos</h2>
+                            <p class="sec06infos">Notificações por e-mail e app para nunca esquecer uma dose.</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-paw fa-2x text-success mb-2"></i>
+                            <h2 class="sec06infosh2">Multi-Pets</h2>
+                            <p class="sec06infos">Gerencie cães, gatos e outros animais em uma única conta.</p>
+                        </div>
                 </div>
                 <div class="vacina">
                     <p class="sec06phvac">Confira as vacinas indicadas para proteger seu gato contra doenças comuns.</p>
                     <a href="vacinacao_pet.php" class="carteirinha">Carteirinha Digital</a>
                 </div>
+                    <div class="container07"></div>
             </div>
         </div>
     </div>

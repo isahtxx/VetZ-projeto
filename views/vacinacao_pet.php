@@ -58,46 +58,44 @@ if (isset($conn)) {
         <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
 
         <!-- Begin section 07 -->
-        <section class="section07" id="sec07">
-            <div class="container07">
-                <div class="header-info">
-                <div class="pet-photo">🐕</div>
-                <h1 class="nome-pet">Luck</h1>
-                <p>Tutor: Marcela Sanches</p>
-                <div class="pet-details">
-                    <div class="pet-detail-item">
-                        <span class="pet-detail-label">Espécie</span>
-                        <span class="pet-detail-value">Cachorro</span>
+            <section class="section07" id="sec07">
+                <div class="container07">
+                    <div class="header-info">
+                        <div class="pet-photo">🐕</div>
+                        <h1 class="nome-pet">Luck</h1>
+                        <p>Tutor: Marcela Sanches</p>
+                        <div class="pet-details">
+                            <div class="pet-detail-item">
+                                <span class="pet-detail-label">Espécie</span>
+                                <span class="pet-detail-value">Cachorro</span>
+                            </div>
+                            <div class="pet-detail-item">
+                                <span class="pet-detail-label">Raça</span>
+                                <span class="pet-detail-value">Vira-Lata</span>
+                            </div>
+                            <div class="pet-detail-item">
+                                <span class="pet-detail-label">Idade</span>
+                                <span class="pet-detail-value">6 anos</span>
+                            </div>
+                            <div class="pet-detail-item">
+                                <span class="pet-detail-label">Data de Nascimento</span>
+                                <span class="pet-detail-value">17/10/2019</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pet-detail-item">
-                        <span class="pet-detail-label">Raça</span>
-                        <span class="pet-detail-value">Vira-Lata</span>
-                    </div>
-                    <div class="pet-detail-item">
-                        <span class="pet-detail-label">Idade</span>
-                        <span class="pet-detail-value">6 anos</span>
-                    </div>
-                    <div class="pet-detail-item">
-                        <span class="pet-detail-label">Data de Nascimento</span>
-                        <span class="pet-detail-value">17/10/2019</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="vaccination-card">
-            <h2>
-                Carteirinha de Vacinação Digital
-                <button class="edit-btn" onclick="openEditModal()">
-                    ✏️ Editar Vacinas
-                </button>
-            </h2>
-            
-            <div class="age-alert">
-                <strong>⏰ Atenção:</strong> Seu pet está com 6 anos de idade. Confira as vacinas recomendadas para esta fase!
-            </div>
-
-            <table class="vaccine-table">
-                <thead>
+                    <div class="vaccination-card">
+                        <h2>
+                            Carteirinha de Vacinação Digital
+                            <button class="edit-btn" onclick="openEditModal()">
+                                ✏️ Editar Vacinas
+                            </button>
+                        </h2>
+                        <div class="age-alert">
+                            <strong>⏰ Atenção:</strong> Seu pet está com 6 anos de idade. Confira as vacinas recomendadas para esta fase!
+                        </div>
+                        <table class="vaccine-table">
+                            <thead>
                     <tr>
                         <th>Vacinação</th>
                         <th>Status</th>
